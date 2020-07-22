@@ -44,6 +44,8 @@
     "tailwindcss": "^1.5.2"
   },
   "dependencies": {
+    "@peculiar/webcrypto": "^1.1.2",
+    "isomorphic-git": "^1.7.3",
     "sirv-cli": "^0.4.4"
   }
 }

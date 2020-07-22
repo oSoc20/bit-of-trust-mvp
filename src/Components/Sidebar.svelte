@@ -21,4 +21,15 @@
 
 <aside class="relative h-full min-h-screen">
   <h1 class="text-blue-800 text-2xl p-8">{side_title}</h1>
+
+  <!-- Invite link -->
+  <!-- 
+    todo: 
+      - ask what team backend needs
+        - Do we provide link?
+        - Do they need a name?
+
+
+
+  -->
 </aside>

@@ -1,5 +1,5 @@
-<div class="bg-blue-800 h-full">
+<div class="bg-blue-200 h-full">
 <div class="text-center w-full text-grey-darkest">
-aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
+Lorem ipsum for dummy's
 </div>
 </div>

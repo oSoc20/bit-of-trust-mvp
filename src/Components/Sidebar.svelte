@@ -19,6 +19,6 @@
 </svelte:head>
 
 
-<aside class="bg-grey-200 h-full">
+<aside class="relative h-full min-h-screen">
   <h1 class="text-blue-800 text-2xl p-8">{side_title}</h1>
 </aside>

@@ -10,10 +10,16 @@ import Content from "./Components/Content.svelte";
 	<link rel="stylesheet" href="./style.css" />
 </svelte:head>
 
-<style></style>
+<style>
+	#main {
+		grid-template-columns: 24rem auto;
+		display: grid;
+	}
+</style>
 
-<main>
+
 <Topbar />
+<div id="main">
 <Sidebar />
 <Content />
-</main>
+</div>

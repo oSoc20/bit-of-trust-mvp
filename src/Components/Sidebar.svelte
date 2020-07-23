@@ -1,9 +1,7 @@
 <script>
-  const side_title = "Invite people you trust into your bubble!" ;
+ import {Chat, Printer, Mail, Clipboard} from 'svelte-hero-icons'
+  const side_title = "Invite people you trust into your bubble " ;
   let shown = true;
-  import iconMail from 'heroicons-ui/icons/icon-mail.svg';
-  import iconChat from 'heroicons-ui/icons/icon-chat.svg';
-  import iconPrinter from 'heroicons-ui/icons/icon-printer.svg';
 </script>
 
 <style>
@@ -37,9 +35,9 @@
         Your invite link:
       </label>
   <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
-    <input class="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="link" aria-label="Full name">
-    <button class="flex-shrink-0 bg-grey-500 hover:bg-grey-700 border-teal-500 hover:border-teal-700 text-sm border-4 text-white py-1 px-2 rounded" type="button">
-      Copy link
+    <input class="appearance-none border-none w-full text-gray-100 mr-3 py-1 px-2 leading-tight focus:outline-none" type="text" placeholder="link" aria-label="Full name">
+    <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+      <Clipboard size="24"/>
     </button>
   </div>
 </form>
@@ -49,15 +47,20 @@
 
   <div class="px-2">
   <div class="text-center text-gray-700 text-xs flex -mx-2">
-    <div class="w-1/3 px-2">
-      <div class="h-16">{iconMail} Email</div>
+    <div class="w-1/3 px-2 flex col-2 space-y-4">
+    <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+      <ul><li><Mail size="24"/></li><li>Email</li></ul>
+    </button>
     </div>
     <div class="w-1/3 px-2">
-     
-      <div class="h-16">{iconChat} Text message</div>
+     <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+      <ul><li><Chat size="24"/></li><li>Text message</li></ul>
+    </button>
     </div>
     <div class="w-1/3 px-2">
-      <div class="h-16">{iconPrinter} Printer</div>
+      <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+      <ul><li><Printer size="24"/></li><li>Printer</li></ul>
+    </button>
     </div>
   </div>
 </div>
@@ -72,4 +75,5 @@
 
 
   -->
+  
 </aside>

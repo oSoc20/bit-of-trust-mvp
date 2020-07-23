@@ -49,18 +49,26 @@
   <div class="text-center text-gray-700 text-xs flex -mx-2">
     <div class="w-1/3 px-2 flex col-2 space-y-4">
     <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-      <ul><li><Mail size="24"/></li><li>Email</li></ul>
+      <div><Mail size="24"/></div><div>Email</div>
     </button>
     </div>
     <div class="w-1/3 px-2">
      <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-      <ul><li><Chat size="24"/></li><li>Text message</li></ul>
+      <div><Chat size="24"/></div><div>ext message</div>
     </button>
     </div>
     <div class="w-1/3 px-2">
-      <button class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-      <ul><li><Printer size="24"/></li><li>Printer</li></ul>
-    </button>
+      <div class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded flex items-center">
+      <div class="inline-flex"><Printer size="24"/></div>
+      <div class="inline-flex">Printer</div>
+    </div>
+    </div>
+  </div>
+  <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
+    <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
+<div class="inline-flex"><Printer  class=" w-12 h-12 inline-block" /></div>
+      <h2 class="title-font font-medium text-3xl text-gray-900">1.3K</h2>
+      <p class="leading-relaxed">Users</p>
     </div>
   </div>
 </div>

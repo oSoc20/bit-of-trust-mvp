@@ -2,6 +2,7 @@
 import Topbar from "./Components/Topbar.svelte";
 import Sidebar from "./Components/Sidebar.svelte";
 import Content from "./Components/Content.svelte";
+import BubbleList from "./Components/BubbleList.svelte";
 
 	let name = 'Finlay';
 </script>
@@ -20,6 +21,7 @@ import Content from "./Components/Content.svelte";
 
 <Topbar />
 <div id="main">
+
 <Sidebar />
 <Content />
 </div>

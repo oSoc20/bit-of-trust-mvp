@@ -19,16 +19,7 @@ function tokenToString(token: Token): string {
     return Buffer.from(token).toString('hex');
 }
 
-async function main(): Promise<void> {
-    //inputs:
-    let tokenA = createToken();
-    let tokenB = createToken();
-    let relationship = "my-relationship";
-
-    console.log(`adding token A (${tokenToString(tokenA)}) `
-        + `and token B (${tokenToString(tokenB)}) `
-        + `to relationship '${relationship}'`);
-
+async function addTokensToRelationship(tokens: Array<Token>, relationship: string): Promise<void> {
     let gitOpts = {
         fs, http,
         corsProxy: 'https://cors.isomorphic-git.org',
@@ -36,78 +27,69 @@ async function main(): Promise<void> {
         dir: 'repo'
     };
 
-    console.log("cloning");
-    await git.clone({...gitOpts, ...{noCheckout: true}});
+    await git.clone({noCheckout: true, ...gitOpts});
 
     try {
-        console.log("fetching");
         try {
-            await git.fetch({...gitOpts, ...{ref: relationship}});
+            await git.fetch({ref: relationship, ...gitOpts});
         } catch {
-            console.log("branch doesn't exist on remote");
+            // branch doesn't exist on remote
         }
 
         // branch doesn't exist on remote, but we might have it locally
-        console.log("checking out branch");
-        await git.checkout({...gitOpts, ...{ref: relationship}});
+        await git.checkout({ref: relationship, ...gitOpts});
     } catch (e) {
         // branch doesn't exist on remote nor locally
 
-        console.log("creating branch");
+        await git.checkout({ref: "dummy", ...gitOpts});
         await git.branch({
-            ...gitOpts, ...{
-                ref: relationship,
-                checkout: true
-            }
+            ref: relationship,
+            checkout: true,
+            ...gitOpts
         });
     }
 
-    let files = await git.listFiles({...gitOpts, ...{ref: relationship}});
-    //console.log(files);
+    let files = await git.listFiles({ref: relationship, ...gitOpts});
     let path = gitOpts.dir + '/' + relationship;
     let fileChanged = false;
     if (!files.includes(relationship)) {
-        console.log("file doesn't exist yet, creating");
         await fs.promises.writeFile(path, "");
         fileChanged = true;
     }
 
     let lines = (await fs.promises.readFile(path)).toString().split('\n');
-    if (!lines.includes(tokenToString(tokenA))) {
-        await fs.promises.appendFile(path, tokenToString(tokenA) + '\n');
-        fileChanged = true;
-    }
-    if (!lines.includes(tokenToString(tokenB))) {
-        await fs.promises.appendFile(path, tokenToString(tokenB) + '\n');
-        fileChanged = true;
+    for (let token of tokens) {
+        if (!lines.includes(tokenToString(token))) {
+            await fs.promises.appendFile(path, tokenToString(token) + '\n');
+            fileChanged = true;
+        }
     }
 
     if (!fileChanged) {
-        console.log("tokens already exist in relationship!");
+        //TODO: return something useful
         return;
     }
 
-    console.log("adding");
-    await git.add({...gitOpts, ...{filepath: relationship}});
+    await git.remove({filepath: ".", ...gitOpts});
+    await git.add({filepath: relationship, ...gitOpts});
 
-    console.log("committing");
     let hash = await git.commit({
-        ...gitOpts, ...{
-            author: {
-                name: 'Bit of Trust System',
-                email: 'system@bit-of-trust',
-            },
-            message: "Add member(s) to relationship"
-        }
+        author: {
+            name: 'Bit of Trust System',
+            email: 'system@bit-of-trust',
+        },
+        message: "Add member(s) to relationship",
+        ...gitOpts
     });
-    console.log(`hash: ${hash}`);
 
-    console.log("pushing");
     let pushResult = await git.push({...gitOpts});
-    console.log(`pushResult: ${pushResult}`);
+    //TODO: check if push was successful
 }
 
-main()
+let tokens = [createToken(), createToken()];
+let relationship = "my-relationship";
+
+addTokensToRelationship(tokens, relationship)
     .then(() => {
         console.log("main() ended");
     })

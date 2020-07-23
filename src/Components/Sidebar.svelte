@@ -1,6 +1,8 @@
 <script>
+ import { ArrowUp, Filter } from 'svelte-hero-icons'
   const side_title = "Invite people you trust into your bubble " ;
   let shown = true;
+
 </script>
 
 <style>
@@ -22,7 +24,7 @@
 
 
 <aside class="sidebar relative h-full min-h-screen">
-  <h1 class="text-blue-800 text-2xl p-8">{side_title}</h1>
+  <h1 class="text-blue-800 text-2xl p-8"><ArrowUp size="100" />{ side_title}</h1>
 <div class="p-8">Select bubble
   <select name="cars" id="cars">
     <option value="bubble1">UX Design</option>
@@ -52,4 +54,5 @@
 
 
   -->
+  
 </aside>

@@ -12,6 +12,8 @@
     float: none;
     width: 100%;
   }
+
+
 }
 </style>
 <svelte:head>
@@ -19,9 +21,27 @@
 </svelte:head>
 
 
-<aside class="relative h-full min-h-screen">
+<aside class="sidebar relative h-full min-h-screen">
   <h1 class="text-blue-800 text-2xl p-8">{side_title}</h1>
-
+<div class="p-8">Select bubble
+  <select name="cars" id="cars">
+    <option value="bubble1">UX Design</option>
+    <option value="bubble2">Food</option>
+    <option value="bubble3">Sports</option>
+    <option value="bubble4">Leisure</option>
+  </select>
+  <button id="newBubble">Create new bubble</button>
+  
+  Your bubble invite link
+  <input type="text" id="bubbleLink" name="bubbleUrl"><button id="newBubble">Copy</button>
+  
+  Share via:
+<ul>
+    <li>Email</li>
+    <li>Text message</li>
+    <li>Printer</li>
+</ul>
+</div>
   <!-- Invite link -->
   <!-- 
     todo: 

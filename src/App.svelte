@@ -1,27 +1,16 @@
 <script>
-import Topbar from "./Components/Topbar.svelte";
-import Sidebar from "./Components/Sidebar.svelte";
-import Content from "./Components/Content.svelte";
-import BubbleList from "./Components/BubbleList.svelte";
+  import { Router, Route, Link } from "svelte-routing";
+import Home from "./pages/Home.svelte";
 
-	let name = 'Finlay';
+	  export let url = ""; //This property is necessary declare to avoid ignore the Router
 </script>
 
-<svelte:head>
-	<link rel="stylesheet" href="./style.css" />
-</svelte:head>
+<Router url="{url}">
+	<!-- <nav>
+		 <Link to="/">Home</Link>
 
-<style>
-	#main {
-		grid-template-columns: 24rem auto;
-		display: grid;
-	}
-</style>
-
-
-<Topbar />
-<div id="main">
-
-<Sidebar />
-<Content />
-</div>
+	 </nav> -->
+	 <div>
+		 <Route path="/"><Home /></Route>
+	 </div>
+ </Router>

@@ -5,19 +5,33 @@
 <script>import BubbleCard from "./Bubble/BubbleCard.svelte";
 
   // get all contacts
-  const allContacts = [
+  const allBubbles = [
     {
-      name: "Betty McWhile"
+      name: "Friends",
+      contacts: [
+        {
+          name: "Michiel Barrymore",
+          pic: null
+        },
+        {
+          name: "Yves Nova",
+          pic: null
+        },
+        {
+          name: "Tamara Tomoro",
+          pic: null
+        }
+      ]
     },
     {
-      name: "Ingrid Donno"
+      name: "osoc ladies"
     }
   ];
   // if timey, async stuff probably  
 </script>
 <ul>
   
-    {#each allContacts as {name}}
-    <li><BubbleCard name={name} /></li>
+    {#each allBubbles as {name}}
+      <li><BubbleCard name={name} /></li>
     {/each}
 </ul>

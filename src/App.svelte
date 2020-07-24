@@ -1,6 +1,6 @@
 <script>
-  import { Router, Route, Link } from "svelte-routing";
-import Home from "./pages/Home.svelte";
+  import { Router, Route } from "svelte-routing";
+	import Home from "./pages/Home.svelte";
 
 	  export let url = ""; //This property is necessary declare to avoid ignore the Router
 </script>

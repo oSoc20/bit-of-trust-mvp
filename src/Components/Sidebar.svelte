@@ -1,5 +1,6 @@
 <script>
  import {Chat, Printer, Mail, Clipboard} from 'svelte-hero-icons'
+import BubbleOverview from '../Pages/BubbleOverview.svelte';
   const side_title = "Invite people you trust into your bubble " ;
   let shown = true;
 </script>
@@ -16,6 +17,7 @@
 
 
 <aside class="sidebar relative h-full min-h-screen">
+
   <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
   <div class="p-8">
 <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">

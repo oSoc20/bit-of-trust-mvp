@@ -3,6 +3,7 @@
 <!-- change contact "label"-->
 
 <script>import BubbleCard from "./Bubble/BubbleCard.svelte";
+import BubbleContacts from "./Bubble/BubbleContacts.svelte";
 
   // get all contacts
   const allBubbles = [
@@ -27,11 +28,20 @@
       name: "osoc ladies"
     }
   ];
-  // if timey, async stuff probably  
+  
+  let toggleBubble = new Array(allBubbles.length).fill(false);
+
+  const toggle = (i) =>{
+    toggleBubble[i] = !toggleBubble[i];
+  };
 </script>
 <ul>
-  
-    {#each allBubbles as {name}}
-      <li><BubbleCard name={name} /></li>
+    {#each allBubbles as {name, contacts = []}, i}
+      <li><BubbleCard name={name}  /></li>
+      {#if toggleBubble}
+
+        <BubbleContacts contacts={contacts} />
+      <!-- To do, check data structure + think about GRASP principles -->
+      {/if}
     {/each}
 </ul>

@@ -1,5 +1,6 @@
 <script>
   export let name = "Unknown person";
+  export let contacts = [];
 </script>
 
 <div class="h-full flex items-center border-gray-200 border p-4 rounded-lg">

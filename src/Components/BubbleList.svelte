@@ -38,7 +38,7 @@ import BubbleContacts from "./Bubble/BubbleContacts.svelte";
 <ul>
     {#each allBubbles as {name, contacts = []}, i}
       <li><BubbleCard name={name}  /></li>
-      {#if toggleBubble}
+      {#if toggleBubble[i]}
 
         <BubbleContacts contacts={contacts} />
       <!-- To do, check data structure + think about GRASP principles -->

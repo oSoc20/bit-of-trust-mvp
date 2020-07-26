@@ -2,6 +2,6 @@
   export let name = "";
 </script>
 
-<div class="pt-12 pb-12">
+<div class="mt-12 mb-12">
   {name}
 </div>

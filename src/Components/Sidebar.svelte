@@ -5,10 +5,6 @@
   let shown = true;
 </script>
 
-<svelte:head>
-  <link rel="stylesheet" href="../style.css" />
-</svelte:head>
-
 <aside class="sidebar relative h-full min-h-screen">
   <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
   <div class="p-8">

@@ -5,13 +5,14 @@ import ContactItem from "./ContactItem.svelte";
 </script>
 
 
-<div class="ml-24">
+<div class="ml-16">
 {#if contacts && contacts.length > 0}
 <ul>
 
   {#each contacts as {name} }
-  <li>
-    <ContactItem class="pb-12" name={name} />
+  <li >
+    
+    <ContactItem  name={name} />
   </li>
   {/each}
 

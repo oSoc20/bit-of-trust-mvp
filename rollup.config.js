@@ -1,4 +1,4 @@
-import { createRollupConfigs } from './scripts/base.config.js';
+import { createRollupConfigs } from './scripts/createBaseRollup.js';
 import autoPreprocess from 'svelte-preprocess';
 import postcssImport from 'postcss-import';
 

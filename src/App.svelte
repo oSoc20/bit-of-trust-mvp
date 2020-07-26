@@ -1,10 +1,10 @@
 <script>
   import { Router } from '@sveltech/routify';
-  import { routes } from '../.routify/routes';
+  import { routes } from '@sveltech/routify/tmp/routes';
 </script>
 
 <Router {routes} />
 
 <style global>
-  @import '../static/global.css';
+  @import '../public/global.css';
 </style>

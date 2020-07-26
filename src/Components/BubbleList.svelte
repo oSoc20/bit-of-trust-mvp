@@ -32,16 +32,19 @@ import BubbleContacts from "./Bubble/BubbleContacts.svelte";
   let toggleBubble = new Array(allBubbles.length).fill(false);
 
   const toggle = (i) =>{
+
     toggleBubble[i] = !toggleBubble[i];
   };
 </script>
+{#if allBubbles && allBubbles.length > 0}
 <ul>
     {#each allBubbles as {name, contacts = []}, i}
-      <li><BubbleCard name={name}  /></li>
+      <li> <button class="w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" aria-expanded={toggleBubble[i]}   /> </button></li>
       {#if toggleBubble[i]}
 
         <BubbleContacts contacts={contacts} />
-      <!-- To do, check data structure + think about GRASP principles -->
+
       {/if}
     {/each}
 </ul>
+{/if}

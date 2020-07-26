@@ -35,6 +35,8 @@
     "spassr": "^1.1.2",
     "svelte": "^3.0.0",
     "svelte-preprocess": "^4.0.8",
+    "svelte-hero-icons": "^1.0.2",
+    "heroicons-ui": "^1.0.0",
     "tailwindcss": "^1.5.2"
   },
   "dependencies": {

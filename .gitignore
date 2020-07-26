@@ -7,3 +7,8 @@
 .idea/
 .vscode
 
+.syncmetadata
+public/.syncmetadata
+scripts/.syncmetadata
+src/.syncmetadata
+src/Components/.syncmetadata

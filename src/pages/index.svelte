@@ -10,9 +10,6 @@
   metatags.description = 'A proof of concept for trust connections on the web.';
 </script>
 
-<svelte:head>
-  <link rel="stylesheet" href="./style.css" />
-</svelte:head>
 <Topbar />
 <div id="main">
   <Sidebar />

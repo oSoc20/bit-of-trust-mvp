@@ -39,7 +39,7 @@ import BubbleContacts from "./Bubble/BubbleContacts.svelte";
 {#if allBubbles && allBubbles.length > 0}
 <ul>
     {#each allBubbles as {name, contacts = []}, i}
-      <li> <button class="w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" aria-expanded={toggleBubble[i]}   /> </button></li>
+      <li> <button class="text-left w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" aria-expanded={toggleBubble[i]}   /> </button></li>
       {#if toggleBubble[i]}
 
         <BubbleContacts contacts={contacts} />

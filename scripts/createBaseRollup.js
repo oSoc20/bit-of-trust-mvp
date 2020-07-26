@@ -27,8 +27,7 @@ export function createRollupConfigs(config) {
   // Combine configs as needed
   return [
     !isNollup && baseConfig(config, { dynamicImports: false }),
-    useDynamicImports && baseConfig(config, { dynamicImports: true }),
-    !isNollup && serviceWorkerConfig(config)
+    useDynamicImports && baseConfig(config, { dynamicImports: true })
   ].filter(Boolean);
 }
 

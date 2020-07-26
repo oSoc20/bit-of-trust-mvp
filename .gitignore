@@ -1,11 +1,13 @@
 /node_modules/
 /public/build/
+/dist
 
 .DS_Store
 
 .idea/
+.vscode
+
 .syncmetadata
-.vscode/launch.json
 public/.syncmetadata
 scripts/.syncmetadata
 src/.syncmetadata

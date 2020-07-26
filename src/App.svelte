@@ -1,16 +1,14 @@
 <script>
-  import { Router, Route } from "svelte-routing";
-	import Home from "./pages/Home.svelte";
-
-	  export let url = ""; //This property is necessary declare to avoid ignore the Router
+  import { Router } from '@sveltech/routify';
+  import { routes } from '@sveltech/routify/tmp/routes';
 </script>
 
-<Router url="{url}">
-	<!-- <nav>
-		 <Link to="/">Home</Link>
+<Router {routes} />
 
-	 </nav> -->
-	 <div>
-		 <Route path="/"><Home /></Route>
-	 </div>
- </Router>
+<style global>
+  @tailwind base;
+  @tailwind components;
+  @tailwind utilities;
+
+  @import '../public/global.css';
+</style>

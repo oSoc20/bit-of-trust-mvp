@@ -1,3 +1,5 @@
+/* eslint-env node */
+
 import svelte from 'rollup-plugin-svelte-hot';
 import Hmr from 'rollup-plugin-hot';
 import resolve from '@rollup/plugin-node-resolve';
@@ -6,7 +8,6 @@ import livereload from 'rollup-plugin-livereload';
 import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy';
 import del from 'del';
-import replace from '@rollup/plugin-replace';
 import { spassr } from 'spassr';
 
 const isNollup = !!process.env.NOLLUP;
@@ -38,7 +39,7 @@ function baseConfig(config, ctx) {
   const { dynamicImports } = ctx;
   const { staticDir, distDir, production, buildDir, svelteWrapper, rollupWrapper } = config;
 
-  const outputConfig = !!dynamicImports
+  const outputConfig = dynamicImports
     ? { format: 'esm', dir: buildDir }
     : { format: 'iife', file: `${buildDir}/bundle.js` };
 

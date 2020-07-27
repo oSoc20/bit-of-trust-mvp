@@ -1,17 +1,19 @@
 <script>
   import Content from "../Components/Content.svelte";
-  import Sidebar from "../Components/Sidebar.svelte";
-  
-  import BubbleList from "../Components/BubbleList.svelte";
+
   import Topbar from "../Components/Topbar.svelte";
-import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
+
+import InviteSidebar from "../Components/Sidebars/InviteSidebar.svelte";
+  
   </script>
+
+  
   <Topbar />
   <div id="main">
 
   <!-- Add bubble  button-->
   <!--Invite to bubble-->
-    <SignupSidebar /> 
+    <InviteSidebar /> 
  
   <Content >
   </Content>

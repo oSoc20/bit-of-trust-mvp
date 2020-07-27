@@ -7,9 +7,9 @@ import BackToList from '../Buttons/BackToList.svelte';
 </script>
 
 <aside class="sidebar relative h-full min-h-screen shadow-md">
- 
-  <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
   <BackToList />
+  <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
+
   <div class="p-8">
     <label
       class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

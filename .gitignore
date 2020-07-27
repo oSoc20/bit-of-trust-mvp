@@ -1,6 +1,14 @@
 /node_modules/
 /public/build/
+/dist
 
 .DS_Store
 
 .idea/
+.vscode
+
+.syncmetadata
+public/.syncmetadata
+scripts/.syncmetadata
+src/.syncmetadata
+src/Components/.syncmetadata

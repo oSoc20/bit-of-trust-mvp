@@ -1,9 +1,10 @@
 import git from "isomorphic-git";
-import fs from "@isomorphic-git/lightning-fs";
 
 import {gitOpts} from "./config";
 import type {Token} from "./token";
 import {tokenToString} from "./token";
+
+const { fs } = gitOpts;
 
 type RelationshipName = string;
 

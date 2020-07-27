@@ -1,5 +1,7 @@
-import http from "isomorphic-git/http/node";
-import fs from "@isomorphic-git/lightning-fs";
+import http from "isomorphic-git/http/web";
+import LightningFS from "@isomorphic-git/lightning-fs";
+
+const fs = new LightningFS('fs')
 
 export let gitOpts = {
   fs, http,

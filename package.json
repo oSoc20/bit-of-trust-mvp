@@ -4,7 +4,7 @@
   "scripts": {
     "build": "routify -b && rollup -c && routify export",
     "start": "sirv public --single",
-    "dev": "run-p routify rollup",
+    "dev": "run-p routify nollup",
     "dev-dynamic": "cross-env BUNDLING=dynamic npm run dev",
     "rollup": "rollup -cw",
     "nollup": "nollup -c",

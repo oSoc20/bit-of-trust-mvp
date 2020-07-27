@@ -76,7 +76,7 @@ class Relationship {
   async getTokens(): Promise<Array<Token>> {
     await this.ensureFileExists();
 
-    let lines = (await fs.promises.readFile(this.path)).toString().split('\n');
+    let lines = (await fs.promises.readFile(this.path, 'utf8')).split('\n');
     return lines
       .filter(l => l.length > 0)
       .map(l => new Uint8Array(l

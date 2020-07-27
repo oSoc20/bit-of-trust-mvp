@@ -4,7 +4,7 @@
   import Content from '../Components/Content.svelte';
 import InviteSidebar from '../Components/Sidebars/InviteSidebar.svelte';
 import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
-
+import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svelte';
   let name = 'Finlay';
 
   metatags.title = 'Bit of Trust';
@@ -13,7 +13,7 @@ import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
 
 <Topbar />
 <div id="main">
-  <InviteSidebar />
+  <CreateBubbleSidebar />
   <Content />
 </div>
 

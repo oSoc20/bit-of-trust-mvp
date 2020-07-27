@@ -5,7 +5,7 @@
   let shown = true;
 </script>
 
-<aside class="sidebar relative h-full min-h-screen">
+<aside class="sidebar relative h-full min-h-screen shadow-md">
   <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
   <div class="p-8">
     <label
@@ -56,49 +56,39 @@
     </label>
 
     <div class="px-2">
-      <div class="text-center text-gray-700 text-xs flex -mx-2">
-        <div class="w-1/3 px-2 flex col-2 space-y-4">
+      <div class="text-center text-gray-700 font-bold text-xs flex -mx-2">
+        <div class="px-2">
           <button
-            class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4
-            rounded inline-flex items-center">
+            class="border-none bg-gray-300 hover:bg-gray-400 font-bold text-gray-800 py-2 px-8
+            rounded text-center">
             <div>
-              <Mail size="24" />
+              <Mail class="w-6 h-6 inline-block" size="24" />
             </div>
             <div>Email</div>
           </button>
         </div>
-        <div class="w-1/3 px-2">
+        <div class="px-2">
           <button
-            class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4
-            rounded inline-flex items-center">
+            class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-8
+            rounded text-center">
             <div>
-              <Chat size="24" />
+              <Chat class="w-6 h-6 inline-block" size="24" />
             </div>
-            <div>ext message</div>
+            <div class="leading-relaxed">SMS</div>
           </button>
         </div>
-        <div class="w-1/3 px-2">
-          <div
-            class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4
-            rounded flex items-center">
+        <div class="px-2">
+          <button
+            class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-8
+            rounded text-center">
             <div class="inline-flex">
-              <Printer size="24" />
+              <Printer class="w-6 h-6 inline-block" size="24" />
             </div>
-            <div class="inline-flex">Printer</div>
-          </div>
+            <p class="leading-relaxed py-0">Printer </p>
+            </button>
         </div>
       </div>
-      <div class="p-4 md:w-1/4 sm:w-1/2 w-full">
-        <div class="border-2 border-gray-200 px-4 py-6 rounded-lg">
-          <div class="inline-flex">
-            <Printer class=" w-12 h-12 inline-block" />
-          </div>
-          <h2 class="title-font font-medium text-3xl text-gray-900">1.3K</h2>
-          <p class="leading-relaxed">Users</p>
-        </div>
-      </div>
-    </div>
-  </div>
+
   <!-- Invite link -->
   <!--
     todo:

@@ -5,6 +5,7 @@
   import BubbleList from "../Components/BubbleList.svelte";
   import Topbar from "../Components/Topbar.svelte";
 import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
+import VisContent from "../Components/VisContent.svelte";
   </script>
   <Topbar />
   <div id="main">
@@ -12,7 +13,7 @@ import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
   <!-- Add bubble  button-->
   <!--Invite to bubble-->
     <SignupSidebar /> 
- 
+ <VisContent />
   <Content >
   </Content>
   </div>

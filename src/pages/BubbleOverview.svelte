@@ -4,13 +4,8 @@ import Sidebar from "../Components/Sidebar.svelte";
 
 import BubbleList from "../Components/BubbleList.svelte";
 import Topbar from "../Components/Topbar.svelte";
-
-
-
-
-
-
 </script>
+
 <Topbar />
 <div id="main">
 <Sidebar>

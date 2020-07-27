@@ -9,6 +9,7 @@ import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy';
 import del from 'del';
 import { spassr } from 'spassr';
+import typescript from '@rollup/plugin-typescript';
 
 const isNollup = !!process.env.NOLLUP;
 
@@ -71,6 +72,7 @@ function baseConfig(config, ctx) {
         flatten: false
       }),
       svelte(svelteConfig),
+      typescript({ sourceMap: !production }),
 
       // resolve matching modules from current working directory
       resolve({

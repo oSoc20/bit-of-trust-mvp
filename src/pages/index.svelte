@@ -1,8 +1,9 @@
 <script>
   import { metatags } from '@sveltech/routify';
   import Topbar from '../Components/Topbar.svelte';
-  import Sidebar from '../Components/Sidebar.svelte';
   import Content from '../Components/Content.svelte';
+import InviteSidebar from '../Components/Sidebars/InviteSidebar.svelte';
+import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
 
   let name = 'Finlay';
 
@@ -12,7 +13,7 @@
 
 <Topbar />
 <div id="main">
-  <Sidebar />
+  <SignupSidebar />
   <Content />
 </div>
 

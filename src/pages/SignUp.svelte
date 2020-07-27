@@ -8,7 +8,7 @@ import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
   </script>
   <Topbar />
   <div id="main">
-<BackToList />
+
   <!-- Add bubble  button-->
   <!--Invite to bubble-->
     <SignupSidebar /> 

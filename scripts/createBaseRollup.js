@@ -2,6 +2,7 @@
 
 import svelte from 'rollup-plugin-svelte-hot';
 import Hmr from 'rollup-plugin-hot';
+import nodePolyfills from 'rollup-plugin-node-polyfills';
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import livereload from 'rollup-plugin-livereload';
@@ -9,6 +10,7 @@ import { terser } from 'rollup-plugin-terser';
 import copy from 'rollup-plugin-copy';
 import del from 'del';
 import { spassr } from 'spassr';
+import typescript from '@rollup/plugin-typescript';
 
 const isNollup = !!process.env.NOLLUP;
 
@@ -71,13 +73,15 @@ function baseConfig(config, ctx) {
         flatten: false
       }),
       svelte(svelteConfig),
-
-      // resolve matching modules from current working directory
+      commonjs(),
+      nodePolyfills(),
       resolve({
         browser: true,
-        dedupe: (importee) => !!importee.match(/svelte(\/|$)/)
+        dedupe: (importee) => !!importee.match(/svelte(\/|$)/),
+        external: ['buffer']
       }),
-      commonjs(),
+
+      typescript({ sourceMap: !production }),
 
       production && terser(), // minify
       !production && isNollup && Hmr({ inMemory: true, public: staticDir }), // refresh only updated code

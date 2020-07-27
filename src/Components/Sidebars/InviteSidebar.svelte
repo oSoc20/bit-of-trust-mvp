@@ -17,8 +17,7 @@ import BackToList from '../Buttons/BackToList.svelte';
       Select your bubble
     </label>
     <select
-      class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4
-      pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
+      class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
       id="grid-state">
       <option>New Mexico</option>
       <option>Missouri</option>
@@ -31,6 +30,7 @@ import BackToList from '../Buttons/BackToList.svelte';
         New bubble
       </button>
 
+
     </p>
     <form class="mt-8 mb-8 w-full max-w-sm">
       <label
@@ -40,7 +40,7 @@ import BackToList from '../Buttons/BackToList.svelte';
       </label>
       <div class="flex items-center border-b border-b-2 border-teal-500 py-2">
         <input
-          class="appearance-none border-none w-full text-gray-100 mr-3 py-1 px-2 leading-tight
+          class="appearance-none border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight
           focus:outline-none"
           type="text"
           placeholder="link"
@@ -102,6 +102,7 @@ import BackToList from '../Buttons/BackToList.svelte';
 
 
   -->
+
 
 </aside>
 

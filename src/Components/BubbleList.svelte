@@ -6,9 +6,9 @@
 import {tokenToString} from "../git/token";
 import BubbleCard from "./Bubble/BubbleCard.svelte";
 import BubbleContacts from "./Bubble/BubbleContacts.svelte";
-import Relationship from "../git/relationship";
-import { onMount } from "svelte";
- let allBubbles = [
+  import { Plus } from 'svelte-hero-icons';
+  // get all contacts
+  const allBubbles = [
     {
       name: "my-relationship",
       contacts: [
@@ -39,11 +39,10 @@ onMount(async () => {
 {#if allBubbles && allBubbles.length > 0}
 <ul>
     {#each allBubbles as {name, contacts = []}, i}
-      <li> <button class="text-left w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" aria-expanded={toggleBubble[i]}   /> </button></li>
+      <li> <button class="text-left w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" toggled={toggleBubble[i]}   /> 
+      </button></li>
       {#if toggleBubble[i]}
-
         <BubbleContacts contacts={contacts} />
-
       {/if}
     {/each}
 </ul>

@@ -4,8 +4,8 @@
   import Content from '../Components/Content.svelte';
 import InviteSidebar from '../Components/Sidebars/InviteSidebar.svelte';
 import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
-
-  let name = 'Finlay';
+import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svelte';
+  let name = 'Bit of Trust';
 
   metatags.title = 'Bit of Trust';
   metatags.description = 'A proof of concept for trust connections on the web.';

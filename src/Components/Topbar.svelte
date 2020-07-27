@@ -1,5 +1,5 @@
 <script>
-  let user = 'Finlay';
+  let user = 'Bit of Trust';
   const icon = 'I';
   //
 </script>

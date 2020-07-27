@@ -4,9 +4,7 @@ import Sidebar from "../Components/Sidebar.svelte";
 
 import BubbleList from "../Components/BubbleList.svelte";
 import Topbar from "../Components/Topbar.svelte";
-
-
-
+import CreateButton from "../Components/Buttons/CreateButton.svelte";
 
 
 
@@ -14,8 +12,9 @@ import Topbar from "../Components/Topbar.svelte";
 <Topbar />
 <div id="main">
 <Sidebar>
-<!-- Add bubble  button-->
 <!--Invite to bubble-->
+  <CreateButton />
+
   <BubbleList /> 
 </Sidebar>
 <Content >

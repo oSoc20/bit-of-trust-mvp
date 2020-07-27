@@ -13,7 +13,7 @@ import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
 
 <Topbar />
 <div id="main">
-  <SignupSidebar />
+  <InviteSidebar />
   <Content />
 </div>
 

@@ -1,7 +1,6 @@
 <script>
-  export let content = "<div />";
   import { Chat, Printer, Mail, Clipboard } from 'svelte-hero-icons';
-  import bbb from '../bbb.svelte';
+
   const side_title = 'Invite people you trust into your bubble ';
   let shown = true;
 </script>
@@ -9,7 +8,7 @@
 <aside class="sidebar relative h-full min-h-screen">
  
 
-  {@html content}
+ <slot />
 </aside>
 
 <style>

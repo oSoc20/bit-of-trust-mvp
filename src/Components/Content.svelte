@@ -1,3 +1,6 @@
 <div class="bg-blue-200 h-full shadow-inner">
-  <div class="text-center w-full text-grey-darkest">Lorem ipsum for dummies</div>
+  <div class="text-center w-full text-grey-darkest">
+    
+    <slot></slot>
+  </div>
 </div>

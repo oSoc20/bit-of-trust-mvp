@@ -1,11 +1,12 @@
 <script>
   import { Chat, Printer, Mail, Clipboard } from 'svelte-hero-icons';
- // import BubbleList from '../BubbleList.svelte';
+import BubbleList from '../bbb.svelte';
   const side_title = 'Invite people you trust into your bubble ';
   let shown = true;
 </script>
 
 <aside class="sidebar relative h-full min-h-screen shadow-md">
+
   <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
   <div class="p-8">
     <label

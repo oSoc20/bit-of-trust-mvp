@@ -36,6 +36,7 @@ import BubbleContacts from "./Bubble/BubbleContacts.svelte";
     toggleBubble[i] = !toggleBubble[i];
   };
 </script>
+<div>
 {#if allBubbles && allBubbles.length > 0}
 <ul>
     {#each allBubbles as {name, contacts = []}, i}
@@ -48,3 +49,4 @@ import BubbleContacts from "./Bubble/BubbleContacts.svelte";
     {/each}
 </ul>
 {/if}
+</div>

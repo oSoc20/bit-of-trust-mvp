@@ -5,6 +5,7 @@ import Sidebar from "../Components/Sidebar.svelte";
 import BubbleList from "../Components/BubbleList.svelte";
 import Topbar from "../Components/Topbar.svelte";
 import CreateButton from "../Components/Buttons/CreateButton.svelte";
+import { url } from "@sveltech/routify";
 
 
 
@@ -14,7 +15,9 @@ import CreateButton from "../Components/Buttons/CreateButton.svelte";
 <div id="main">
 <Sidebar>
 <!--Invite to bubble-->
-  <CreateButton />
+  <CreateButton href={$url("../SignUp")} />
+  
+  <CreateButton href={$url( "../Invite")} />
 
   <BubbleList /> 
 </Sidebar>

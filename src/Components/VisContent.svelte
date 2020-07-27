@@ -4,4 +4,3 @@
   console.info("All B", getAllBubbles());
 </script>
 
-<p>iets</p>

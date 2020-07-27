@@ -7,6 +7,8 @@ import {tokenToString} from "../git/token";
 import BubbleCard from "./Bubble/BubbleCard.svelte";
 import BubbleContacts from "./Bubble/BubbleContacts.svelte";
   import { Plus } from 'svelte-hero-icons';
+import { onMount } from "svelte";
+import Relationship from "../git/relationship";
   // get all contacts
   const allBubbles = [
     {

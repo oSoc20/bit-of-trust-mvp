@@ -2,32 +2,31 @@
 <!-- ability to delete contact-->
 <!-- change contact "label"-->
 
-<script>import BubbleCard from "./Bubble/BubbleCard.svelte";
+<script>
+import {tokenToString} from "../git/token";
+import BubbleCard from "./Bubble/BubbleCard.svelte";
 import BubbleContacts from "./Bubble/BubbleContacts.svelte";
-
-  // get all contacts
-  const allBubbles = [
+import Relationship from "../git/relationship";
+import { onMount } from "svelte";
+ let allBubbles = [
     {
-      name: "Friends",
+      name: "my-relationship",
       contacts: [
-        {
-          name: "Michiel Barrymore",
-          pic: null
-        },
-        {
-          name: "Yves Nova",
-          pic: null
-        },
-        {
-          name: "Tamara Tomoro",
-          pic: null
-        }
       ]
     },
     {
       name: "osoc ladies"
     }
   ];
+let res;
+onMount(async () => {
+  let relationship = await Relationship.get("my-relationship");
+  res = await Promise.all((await relationship.getTokens()).map(tokenToString));
+   res.forEach((elem) => allBubbles[0].contacts.push({"name": elem, "pic": null}));
+   console.info("TAK", allBubbles[0].contacts);
+});
+  // get all contacts
+ 
   
   let toggleBubble = new Array(allBubbles.length).fill(false);
 

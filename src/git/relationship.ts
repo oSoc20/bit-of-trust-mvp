@@ -122,7 +122,8 @@ class Relationship {
 
     if (await this.includesToken(token)) return false;
 
-    await fs.promises.appendFile(this.path, tokenToString(token) + '\n');
+    let newContents = await fs.promises.readFile(this.path, 'utf8') + tokenToString(token) + '\n';
+    await fs.promises.writeFile(this.path, newContents);
     this.changed = true;
 
     return true;

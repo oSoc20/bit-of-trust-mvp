@@ -8,7 +8,8 @@
 <script lang="ts">
   import {DataSet, Network} from "vis-network/standalone";
   import Relationship from "../git/relationship";
-  import {tokenToString} from "../git/token";
+  import {stringToToken, tokenToString} from "../git/token";
+  import {LocalData} from "../git/localdata";
 
   let networkContainer;
 
@@ -62,6 +63,9 @@
             weight: 300,
             size: 24
           },
+          font: {
+            size: 0,
+          },
         },
         relationships: {
           shape: 'icon',
@@ -73,17 +77,32 @@
             size: 48
           },
         }
+      },
+      interaction: {
+        hover: true
       }
     };
 
+    //TODO: remove test data
+    {
+      let myTokenString = "fed8419520d38b9d740a10d90a11d7cf";
+      let myToken = stringToToken(myTokenString);
+      let myName = "Finlay";
+      LocalData.setTokenAlias(myToken, myName);
+    }
+
     for (let relationship: Relationship of relationships) {
       let hash = await relationship.getHash();
-      data.nodes.add({id: hash, label: relationship.name, group: "relationships"});
+      let relationshipAlias = LocalData.getRelationshipAlias(relationship);
+      data.nodes.add({id: hash, label: relationshipAlias, group: "relationships"});
 
       for (let token of await relationship.getTokens()) {
         let tokenString = tokenToString(token);
+        let tokenAlias = LocalData.getTokenAlias(token);
+        let known = LocalData.isTokenKnown(token);
+        let visGroup = known ? "knownUsers" : "unknownUsers";
         if (!data.nodes.getIds().some(id => id === tokenString)) {
-          data.nodes.add({id: tokenString, label: "", value: 1, group: "unknownUsers"});
+          data.nodes.add({id: tokenString, label: tokenAlias, value: 1, group: visGroup});
         }
         data.edges.add({from: tokenString, to: hash});
       }
@@ -91,6 +110,22 @@
 
     networkContainer.style = "";
     const network = new Network(networkContainer, data, options);
+    network.on("hoverNode", (params) => {
+      let tokenString = params.node;
+      let node = network.body.nodes[tokenString];
+      if (node.options.group === "unknownUsers") {
+        network.body.nodes[tokenString].setOptions({font: {size: 16}});
+        network.redraw();
+      }
+    });
+    network.on("blurNode", (params) => {
+      let tokenString = params.node;
+      let node = network.body.nodes[tokenString];
+      if (node.options.group === "unknownUsers") {
+        network.body.nodes[tokenString].setOptions({font: {size: 0}});
+        network.redraw();
+      }
+    });
   })();
 </script>
 

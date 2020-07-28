@@ -4,7 +4,7 @@ import {gitOpts} from "./config";
 import type {Token} from "./token";
 import {tokenToString} from "./token";
 
-const { fs } = gitOpts;
+const {fs} = gitOpts;
 
 type RelationshipName = string;
 
@@ -25,8 +25,10 @@ class Relationship {
   }
 
   private static async ensureCloned(): Promise<void> {
-    let dir = await fs.promises.readdir(gitOpts.dir);
-    if (dir.length == 0) {
+    try {
+      await fs.promises.readdir(gitOpts.dir);
+    } catch {
+      console.log("cloning");
       await git.clone({noCheckout: true, ...gitOpts});
     }
   }
@@ -70,7 +72,7 @@ class Relationship {
 
     return Promise.all(
       branches.filter(b => b != "HEAD" && b != "dummy")
-              .map(async n => await Relationship.get(n))
+        .map(async n => await Relationship.get(n))
     );
   }
 
@@ -95,6 +97,10 @@ class Relationship {
     }
   }
 
+  private async tryPull(): Promise<void> {
+    await git.pull({ref: this.name, singleBranch: true, ...gitOpts});
+  }
+
   async getTokens(): Promise<Array<Token>> {
     await this.ensureFileExists();
 
@@ -112,6 +118,8 @@ class Relationship {
   }
 
   async addToken(token: Token): Promise<boolean> {
+    await this.tryPull();
+
     if (await this.includesToken(token)) return false;
 
     await fs.promises.appendFile(this.path, tokenToString(token) + '\n');
@@ -129,10 +137,6 @@ class Relationship {
     await git.add({filepath: this.name, ...gitOpts});
 
     await git.commit({
-      author: {
-        name: 'Bit of Trust System',
-        email: 'system@bit-of-trust',
-      },
       message: "Add member(s) to relationship",
       ...gitOpts
     });
@@ -146,10 +150,14 @@ class Relationship {
     //TODO: don't return false?
     if (!this.unpushedChanges) return false;
 
-    let pushResult = await git.push({...gitOpts});
+    try {
+      await git.push({...gitOpts});
+    } catch (error) {
+      console.log("fatal push error: ", error);
+      return false;
+    }
 
-    //TODO: check if this is correct
-    return pushResult.ok != undefined;
+    return true;
   }
 }
 

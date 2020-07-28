@@ -1,33 +1,20 @@
-const store = window.localStorage;
+import { writable } from "svelte/store";
 
-const checkSignedUp = () => {
+const user = writable(false)
 
-  // todo: simple oneliner
-  if(store.getItem("signup") && store.getItem("signup").length > 0){
-    return true;
-  }
-  else{
-    return false;
-  }
+user.authenticate = function (){
+    const name = localStorage.getItem("user");
+    user.set(name);
 }
 
-const setOwnAlias = (alias) => {
-
-  store.setItem("user", alias);
-
+user.login = function (name) {
+    localStorage.setItem("user", name);
+    user.set(name);
 }
 
-const clearOwnAlias = () => {
-  store.setItem("user", "");
+user.logout = function () {
+    localStorage.removeItem('user')
+    user.set(false);
 }
 
-const getOwnAlias = () => {
-
-  const alias = store.getItem("user");
-
-  if(alias && alias.length > 0)
-    return alias;
-  else {
-    console.error("User data not found");
-  }
-}
+export default user

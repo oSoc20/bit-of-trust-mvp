@@ -6,7 +6,12 @@ module.exports = {
       sans:
         '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif'
     },
-    extend: {}
+    extend: {
+      colors: {
+        gray: {
+          '100': '#e5e5e5',
+        }
+      }}
   },
   variants: {},
   plugins: []

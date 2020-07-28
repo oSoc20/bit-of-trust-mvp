@@ -7,7 +7,8 @@ import Topbar from "../Components/Topbar.svelte";
 import CreateButton from "../Components/Buttons/CreateButton.svelte";
 import { url } from "@sveltech/routify";
 
-
+const signUpButtonText = "Sign Up";
+const inviteButtonText = "Invite to Bubble";
 
 </script>
 
@@ -15,9 +16,9 @@ import { url } from "@sveltech/routify";
 <div id="main">
 <Sidebar>
 <!--Invite to bubble-->
-  <CreateButton href={$url("../SignUp")} />
+  <CreateButton href={$url("../SignUp")} text={signUpButtonText} />
   
-  <CreateButton href={$url( "../Invite")} />
+  <CreateButton href={$url( "../Invite")} text={inviteButtonText} />
 
   <BubbleList /> 
 </Sidebar>

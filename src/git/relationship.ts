@@ -52,6 +52,17 @@ class Relationship {
     return new Relationship(name);
   }
 
+  static async getAll(): Promise<Array<Relationship>> {
+    await git.clone({noCheckout: true, ...gitOpts});
+
+    let branches = await git.listBranches({remote: 'origin', ...gitOpts});
+
+    return Promise.all(
+      branches.filter(b => b != "HEAD" && b != "dummy")
+              .map(async n => await Relationship.get(n))
+    );
+  }
+
   private async isCheckedOut(): Promise<boolean> {
     let currentBranch = await git.currentBranch({...gitOpts});
     return currentBranch == this.name;

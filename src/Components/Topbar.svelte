@@ -1,6 +1,13 @@
 <script>
+	import Relationship from "../git/relationship";
+	import user from "../Data/SignUpController";
+	Relationship.get("my-relationship").then( (ev) => {
+		ev.getTokens().then((v) => {
+			console.info("tokens", v);
+		});
+	});
 
-  let user = 'Finlay';
+	let userName = "Bit of Trust";
   const icon = 'I';
   //
 </script>
@@ -27,7 +34,11 @@
 		c-0.2-1.3,0-2.6,0-4c0-37,0-74,0-111c0-5.7,2.1-8.7,6.3-8.9c4.4-0.3,7.4,3,7.4,8.6C48.7,46.2,48.7,65.1,48.7,84z"/>
 </g>
 </svg>
-    <span class="font-semibold ml-4 text-xl tracking-tight">{user}</span>
+{#if !$user}
+		<span class="font-semibold ml-4 text-xl tracking-tight">{userName}</span>
+{:else}
+<span class="font-semibold ml-4 text-xl tracking-tight">{$user}</span>
+{/if}
   </div>
 
 </nav>

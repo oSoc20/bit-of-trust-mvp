@@ -79,7 +79,9 @@
         }
       },
       interaction: {
-        hover: true
+        hover: true,
+        selectable: false,
+        dragView: false
       }
     };
 

@@ -3,10 +3,11 @@ import git from "isomorphic-git";
 import {gitOpts} from "./config";
 import type {Token} from "./token";
 import {tokenToString} from "./token";
+import type {InviteSecret} from "./invitedata";
 
 const {fs} = gitOpts;
 
-type RelationshipName = string;
+export type RelationshipName = string;
 
 //TODO: this is turning into a god object => should be split
 class Relationship {
@@ -129,7 +130,7 @@ class Relationship {
     return true;
   }
 
-  async commitChanges(): Promise<boolean> {
+  async commitChanges(inviteSecret: InviteSecret = null): Promise<boolean> {
     if (!this.changed) {
       return false;
     }
@@ -137,8 +138,15 @@ class Relationship {
     await git.remove({filepath: ".", ...gitOpts});
     await git.add({filepath: this.name, ...gitOpts});
 
+    let commitMessage = "Add member(s) to relationship";
+
+    if (inviteSecret !== null) {
+      commitMessage += "\n\n";
+      commitMessage += "Invite: " + inviteSecret;
+    }
+
     await git.commit({
-      message: "Add member(s) to relationship",
+      message: commitMessage,
       ...gitOpts
     });
 

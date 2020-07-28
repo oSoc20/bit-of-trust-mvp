@@ -10,6 +10,7 @@
   import Relationship from "../git/relationship";
   import {stringToToken, tokenToString} from "../git/token";
   import {LocalData} from "../git/localdata";
+  import {InviteData} from "../git/invitedata";
 
   let networkContainer;
 
@@ -91,6 +92,17 @@
       let myToken = stringToToken(myTokenString);
       let myName = "Finlay";
       LocalData.setTokenAlias(myToken, myName);
+
+      let baseUrl = "https://bit-of-trust.osoc.be/invite/";
+      let mySecondRelationship = relationships.find(r => r != null && r.name === "my-second-relationship");
+      let invite = InviteData.createInvite(mySecondRelationship, myToken, baseUrl);
+      console.log(invite);
+
+      //remove the alias to test if accepting the invite adds it back
+      localStorage.removeItem("token:" + myTokenString);
+
+      let ourToken = await InviteData.acceptInvite(invite, baseUrl);
+      LocalData.setTokenAlias(ourToken, "Alex");
     }
 
     for (let relationship: Relationship of relationships) {

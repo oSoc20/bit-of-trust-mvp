@@ -2,7 +2,7 @@
   "name": "bit-of-trust-mvp",
   "version": "1.0.0",
   "scripts": {
-    "build": "routify -b && rollup -c && routify export",
+    "build": "routify -b -D && rollup -c && routify export",
     "start": "sirv public --single",
     "dev": "run-p routify rollup",
     "dev-dynamic": "cross-env BUNDLING=dynamic npm run dev",
@@ -52,6 +52,7 @@
     "@isomorphic-git/lightning-fs": "^4.3.0",
     "@peculiar/webcrypto": "^1.1.2",
     "isomorphic-git": "^1.7.3",
-    "sirv-cli": "^0.4.4"
+    "sirv-cli": "^0.4.4",
+    "vis-network": "^7.10.2"
   }
 }

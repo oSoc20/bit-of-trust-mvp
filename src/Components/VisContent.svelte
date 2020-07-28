@@ -1,6 +1,9 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.14.0/css/all.css">
+
+<!-- Preload assets to make sure they render properly -->
 <i class="far fa-user" style="visibility:hidden;"></i>
 <i class="fal fa-user" style="visibility:hidden;"></i>
+<i class="fas fa-users" style="visibility:hidden;"></i>
 
 <script lang="ts">
   import {DataSet, Network} from "vis-network/standalone";
@@ -66,7 +69,7 @@
             face: '"Font Awesome 5 Free"',
             color: "#2c5282",
             code: '\uf0c0',
-            weight: 700,
+            weight: 900,
             size: 48
           },
         }

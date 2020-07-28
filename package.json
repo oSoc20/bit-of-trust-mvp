@@ -2,7 +2,7 @@
   "name": "bit-of-trust-mvp",
   "version": "1.0.0",
   "scripts": {
-    "build": "routify -b && rollup -c && routify export",
+    "build": "routify -b -D && rollup -c && routify export",
     "start": "sirv public --single",
     "dev": "run-p routify rollup",
     "dev-dynamic": "cross-env BUNDLING=dynamic npm run dev",

@@ -6,8 +6,8 @@ import InviteSidebar from '../Components/Sidebars/InviteSidebar.svelte';
 import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
 import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svelte';
 
-import user from "../Data/SignUpController";
-user.authenticate();
+  import user from "../Data/SignUpController";
+  user.authenticate();
   let name = 'Bit of Trust';
 
   metatags.title = 'Bit of Trust';

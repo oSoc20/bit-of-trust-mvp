@@ -23,11 +23,7 @@ import AcceptInviteSidebar from '../Components/Sidebars/AcceptInviteSidebar.svel
   <AcceptInviteSidebar />
 
   
-    {#if !$user}
-      {$goto('/SignUp')}
-    {:else}
-      {$goto('/BubbleOverview')}
-    {/if}
+
 
   <Content />
 </div>

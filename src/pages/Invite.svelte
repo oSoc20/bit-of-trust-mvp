@@ -1,28 +1,36 @@
 <script>
-  import Content from "../Components/Content.svelte";
+  import { metatags, goto } from '@sveltech/routify';
+  import Topbar from '../Components/Topbar.svelte';
+  import Content from '../Components/Content.svelte';
+import InviteSidebar from '../Components/Sidebars/InviteSidebar.svelte';
+import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
+import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svelte';
+import AcceptInviteSidebar from '../Components/Sidebars/AcceptInviteSidebar.svelte'
 
-  import Topbar from "../Components/Topbar.svelte";
+  import user from "../Data/SignUpController";
+  user.authenticate();
+  let name = 'Bit of Trust';
 
-import InviteSidebar from "../Components/Sidebars/InviteSidebar.svelte";
+  metatags.title = 'Bit of Trust';
+  metatags.description = 'A proof of concept for trust connections on the web.';
   
-  </script>
+
+
+</script>
+
+<Topbar />
+<div id="main">
+  <AcceptInviteSidebar />
 
   
-  <Topbar />
-  <div id="main">
 
-  <!-- Add bubble  button-->
-  <!--Invite to bubble-->
-    <InviteSidebar /> 
- 
-  <Content >
-  </Content>
-  </div>
-  <style>
-    #main {
-      grid-template-columns: 24rem auto;
-      display: grid;
-    }
-  </style>
-  
-  
+
+  <Content />
+</div>
+
+<style>
+  #main {
+    grid-template-columns: 24rem auto;
+    display: grid;
+  }
+</style>

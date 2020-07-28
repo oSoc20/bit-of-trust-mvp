@@ -6,8 +6,9 @@ import BubbleList from "../Components/BubbleList.svelte";
 import Topbar from "../Components/Topbar.svelte";
 import CreateButton from "../Components/Buttons/CreateButton.svelte";
 import { url } from "@sveltech/routify";
-
-const signUpButtonText = "Sign Up";
+import user from "../Data/SignUpController";
+  user.authenticate();
+const createBubble = "Create bubble";
 const inviteButtonText = "Invite to Bubble";
 
 </script>
@@ -15,11 +16,10 @@ const inviteButtonText = "Invite to Bubble";
 <Topbar />
 <div id="main">
 <Sidebar>
-<!--Invite to bubble-->
-  <CreateButton href={$url("../SignUp")} text={signUpButtonText} />
-  
+<!--Invite to bubble--><div class="p-8 text-center">
+  <CreateButton href={$url("../AddBubble")} text={createBubble} />
   <CreateButton href={$url( "../Invite")} text={inviteButtonText} />
-
+</div>
   <BubbleList /> 
 </Sidebar>
 <Content >

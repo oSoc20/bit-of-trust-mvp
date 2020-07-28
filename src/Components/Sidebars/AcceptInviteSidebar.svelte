@@ -1,15 +1,8 @@
 <script>
   import { Upload, ArrowNarrowRight } from 'svelte-hero-icons';
   import BubbleList from '../BubbleList.svelte';
-import user from '../../Data/SignUpController';
   const side_title = 'Invite people you trust into your bubble ';
   let name = "bitoftrust";
-
-  function signUpuser() {
-
-    if(name)
-      user.login(name);
-  }
 </script>
 
 <aside class="sidebar relative h-full min-h-screen p-8">
@@ -38,27 +31,8 @@ import user from '../../Data/SignUpController';
         for="grid-state">
         Alias picture
       </label>
-
-<section class="text-gray-700 body-font pt-2">
-  <div class="container mx-auto flex py-2 items-center">
-    <div>
-      <img class="object-cover object-center rounded-full" alt="hero" src="https://dummyimage.com/600x600">
-    </div>
-    <div class=" md:w-1/2 pl-4 flex flex-col items-start text-left items-center text-center">
-      <div class="justify-center">
-       <button class="bg-gray-300 ml-4 mb-4 hover:bg-gray-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-        <Upload size="24" />
-        <span class="pl-2">Select from library</span>
-       </button>
-        <button class="bg-gray-300 ml-4 hover:bg-gray-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
-        <Upload size="24" />
-        <span class="pl-2">Upload from computer</span>
-       </button>      </div>
-    </div>
-  </div>
-</section>
       <div class="text-right mt-16">
-       <button on:click={signUpuser} class="bg-teal-300 hover:bg-teal-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+       <button class="bg-teal-300 hover:bg-teal-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
         <span class="pr-6 pl-6">Set up</span>
         <ArrowNarrowRight size="24" />
        </button>

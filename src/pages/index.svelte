@@ -5,6 +5,7 @@
 import InviteSidebar from '../Components/Sidebars/InviteSidebar.svelte';
 import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
 import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svelte';
+import AcceptInviteSidebar from '../Components/Sidebars/AcceptInviteSidebar.svelte'
   let name = 'Bit of Trust';
 
   metatags.title = 'Bit of Trust';
@@ -19,7 +20,7 @@ import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svel
 
 <Topbar />
 <div id="main">
-  <InviteSidebar />
+  <AcceptInviteSidebar />
   <Content />
 </div>
 

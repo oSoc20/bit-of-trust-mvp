@@ -1,15 +1,8 @@
 <script>
   import { Upload, ArrowNarrowRight } from 'svelte-hero-icons';
   import BubbleList from '../BubbleList.svelte';
-import user from '../../Data/SignUpController';
   const side_title = 'Invite people you trust into your bubble ';
   let name = "bitoftrust";
-
-  function signUpuser() {
-
-    if(name)
-      user.login(name);
-  }
 </script>
 
 <aside class="sidebar relative h-full min-h-screen p-8">
@@ -33,6 +26,7 @@ import user from '../../Data/SignUpController';
           aria-label="Full name" />
       </div>
     </form>
+    {name}
     <label
         class=" uppercase tracking-wide text-gray-700 text-xs font-bold"
         for="grid-state">
@@ -58,7 +52,7 @@ import user from '../../Data/SignUpController';
   </div>
 </section>
       <div class="text-right mt-16">
-       <button on:click={signUpuser} class="bg-teal-300 hover:bg-teal-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+       <button class="bg-teal-300 hover:bg-teal-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
         <span class="pr-6 pl-6">Set up</span>
         <ArrowNarrowRight size="24" />
        </button>

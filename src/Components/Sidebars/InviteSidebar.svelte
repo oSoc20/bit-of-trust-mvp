@@ -1,16 +1,15 @@
 <script>
   import { Chat, Printer, Mail, Clipboard } from 'svelte-hero-icons';
 import BubbleList from '../BubbleList.svelte';
-import CreateButton from "../Buttons/CreateButton.svelte";
+import BackToList from '../Buttons/BackToList.svelte';
   const side_title = 'Invite people you trust into your bubble ';
   let shown = true;
-  import { url } from "@sveltech/routify";
-  const backToBubble = "< Back to bubble list"
 </script>
 
 <aside class="sidebar relative h-full min-h-screen shadow-md">
-  <div class=" ml-6 pt-8"><CreateButton href={$url("../BubbleOverview")} text={backToBubble} /></div>
+  <BackToList />
   <h1 class="text-blue-800 text-center text-2xl p-8">{side_title}</h1>
+
   <div class="p-8">
     <label
       class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

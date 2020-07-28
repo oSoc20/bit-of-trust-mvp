@@ -26,7 +26,6 @@
           aria-label="Full name" />
       </div>
     </form>
-    {name}
     <label
         class=" uppercase tracking-wide text-gray-700 text-xs font-bold"
         for="grid-state">

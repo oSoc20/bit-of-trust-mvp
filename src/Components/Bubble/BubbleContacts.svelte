@@ -5,7 +5,7 @@ import ContactItem from "./ContactItem.svelte";
 </script>
 
 
-<div class="ml-16">
+<div class="ml-8">
 {#if contacts && contacts.length > 0}
 <ul>
 

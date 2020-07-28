@@ -15,11 +15,10 @@ const inviteButtonText = "Invite to Bubble";
 <Topbar />
 <div id="main">
 <Sidebar>
-<!--Invite to bubble-->
+<!--Invite to bubble--><div class="p-8 text-center">
   <CreateButton href={$url("../SignUp")} text={signUpButtonText} />
-  
   <CreateButton href={$url( "../Invite")} text={inviteButtonText} />
-
+</div>
   <BubbleList /> 
 </Sidebar>
 <Content >

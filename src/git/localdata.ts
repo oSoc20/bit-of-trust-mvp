@@ -40,4 +40,14 @@ export class LocalData {
     let key = this.getKeyForRelationship(relationship);
     localStorage.setItem(key, alias);
   }
+
+  static isTokenKnown(token: Token): boolean {
+    let key = this.getKeyForToken(token);
+    return localStorage.getItem(key) !== null;
+  }
+
+  static isRelationshipKnown(relationship: Relationship): boolean {
+    let key = this.getKeyForRelationship(relationship);
+    return localStorage.getItem(key) !== null;
+  }
 }

@@ -9,6 +9,12 @@ import CreateBubbleSidebar from '../Components/Sidebars/CreateBubbleSidebar.svel
 
   metatags.title = 'Bit of Trust';
   metatags.description = 'A proof of concept for trust connections on the web.';
+  
+
+	let myStorage = window.localStorage;
+
+
+	console.info("My Cat", myStorage.getItem("myCat"));
 </script>
 
 <Topbar />

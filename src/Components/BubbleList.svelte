@@ -23,9 +23,10 @@ import Relationship from "../git/relationship";
 let res;
 onMount(async () => {
   let relationship = await Relationship.get("my-relationship");
-  res = await Promise.all((await relationship.getTokens()).map(tokenToString));
-   res.forEach((elem) => allBubbles[0].contacts.push({"name": elem, "pic": null}));
-   console.info("TAK", allBubbles[0].contacts);
+  for (let token of await relationship.getTokens()) {
+    let tokenString = tokenToString(token);
+    allBubbles[0].contacts.push({"name": tokenString, "pic": null});
+  }
 });
   // get all contacts
  

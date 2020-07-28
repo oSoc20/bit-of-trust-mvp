@@ -17,5 +17,7 @@ div {
   <div class="flex">
   <img alt="team" class="w-8 h-8 bg-gray-100 object-cover object-center rounded-full" src="https://dummyimage.com/84x84" />
   <div class="contact-name">{name}</div>
+  <!-- set alias-->
+  <!-- delete contact -->
 </div>
 </div>

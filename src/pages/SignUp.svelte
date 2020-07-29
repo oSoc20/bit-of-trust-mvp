@@ -1,35 +1,16 @@
 <script>
-  import Content from "../Components/Content.svelte";
-  import Sidebar from "../Components/Sidebar.svelte";
-  import BackToList from "../Components/Buttons/BackToList.svelte";
-  import BubbleList from "../Components/BubbleList.svelte";
-  import Topbar from "../Components/Topbar.svelte";
-import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
-import VisContent from "../Components/VisContent.svelte";
+  import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
 
-import user from "../Data/SignUpController";
-import { goto } from "@sveltech/routify";
+  import user from "../Data/SignUpController";
+  import {goto} from "@sveltech/routify";
+
   user.authenticate();
 
-  if($user){
+  if ($user) {
     $goto('/');
   }
-  </script>
-  <Topbar />
-  <div id="main">
+</script>
 
-  <!-- Add bubble  button-->
-  <!--Invite to bubble-->
-    <SignupSidebar /> 
- <VisContent />
-  <Content >
-  </Content>
-  </div>
-  <style>
-    #main {
-      grid-template-columns: 24rem auto;
-      display: grid;
-    }
-  </style>
-  
-  
+<!-- Add bubble  button-->
+<!--Invite to bubble-->
+<SignupSidebar/>

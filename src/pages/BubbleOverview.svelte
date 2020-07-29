@@ -15,7 +15,7 @@
 </script>
 
 <Sidebar>
-  <!--Invite to bubble-->
+  <!--Invite to bubble-->d
   <div class="p-8 text-center">
     <CreateButton href={$url("../AddBubble")} text={createBubble}/>
     <CreateButton href={$url( "../InviteContact")} text={inviteButtonText}/>

@@ -2,13 +2,16 @@
   import { Upload, ArrowNarrowRight } from 'svelte-hero-icons';
   import BubbleList from '../BubbleList.svelte';
 import user from '../../Data/SignUpController';
+import { goto, url } from '@sveltech/routify';
   const side_title = 'Invite people you trust into your bubble ';
   let name = "bitoftrust";
 
   function signUpuser() {
 
-    if(name)
+    if(name){
       user.login(name);
+      goto("/BubbleOverview");
+    }
   }
 </script>
 

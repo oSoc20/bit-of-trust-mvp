@@ -3,6 +3,7 @@
   import BubbleList from '../BubbleList.svelte';
 import user from '../../Data/SignUpController';
 import { goto, url } from '@sveltech/routify';
+import {LocalData} from '../../git/localdata';
   import {createToken, tokenToString} from "../../git/token";
   const side_title = 'Invite people you trust into your bubble ';
   let name = "bitoftrust";
@@ -14,6 +15,7 @@ import { goto, url } from '@sveltech/routify';
 
       user.login(name);
       localStorage.setItem("token", tokenToString(token));
+      LocalData.setTokenAlias(token, name);
       $goto("/BubbleOverview");
     }
   }

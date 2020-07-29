@@ -10,7 +10,6 @@
   import {InviteData} from "../../git/invitedata";
   import {inviteBaseUrl} from "../../git/config";
 
-  console.log($params)
   let inviteInfo = InviteData.decodeInvite($params.invite);
 </script>
 

@@ -28,7 +28,6 @@ export class LocalData {
   }
 
   static getRelationshipAlias(relationshipName: RelationshipName): string {
-    console.log(relationshipName);
     let key = this.getKeyForRelationship(relationshipName);
     return localStorage.getItem(key) ?? this.getRelationshipFallbackAlias(relationshipName);
   }

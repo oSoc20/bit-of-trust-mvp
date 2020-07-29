@@ -50,11 +50,6 @@ export class InviteData {
 
     let relationshipName: RelationshipName = invite.r;
 
-    console.log(inviterToken);
-    console.log(inviterAlias);
-    console.log(inviteSecret);
-    console.log(relationshipName);
-
     return {
       inviterToken,
       inviterAlias,

@@ -5,7 +5,25 @@ import CreateButton from "../Buttons/CreateButton.svelte";
   const side_title = 'Invite people you trust into your bubble ';
   let shown = true;
   import { url } from "@sveltech/routify";
+import Relationship from '../../git/relationship';
+import { onMount } from 'svelte';
+import { LocalData } from '../../git/localdata';
   const backToBubble = "< Back to bubble list"
+  let bubbleList = [];
+  // Gain bubble list
+  onMount(async () => {
+    let bubbles = await Relationship.getAll();
+    let tempList = [];
+    bubbles.forEach((el) => {
+      if(el) {
+      console.info("e", bubbles);
+      let str = LocalData.getRelationshipAlias(el);
+      tempList.push(str);
+      }
+    });
+    bubbleList = tempList;
+  });
+
 </script>
 
 <aside class="sidebar relative h-full min-h-screen shadow-md">
@@ -20,15 +38,16 @@ import CreateButton from "../Buttons/CreateButton.svelte";
     <select
       class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
       id="grid-state">
-      <option>New Mexico</option>
-      <option>Missouri</option>
-      <option>Texas</option>
+      {#each bubbleList as b}
+        <option>{b}</option>
+      {/each}
+
     </select>
     <p>
       <button
         class="mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border
         border-gray-400 rounded shadow">
-        New bubble
+        Generate link
       </button>
 
 

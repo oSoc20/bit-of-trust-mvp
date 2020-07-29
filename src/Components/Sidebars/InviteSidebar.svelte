@@ -8,22 +8,43 @@ import CreateButton from "../Buttons/CreateButton.svelte";
 import Relationship from '../../git/relationship';
 import { onMount } from 'svelte';
 import { LocalData } from '../../git/localdata';
+import { InviteData } from '../../git/invitedata';
+import user from '../../Data/SignUpController';
   const backToBubble = "< Back to bubble list"
+  let selected ="";
+  let link = "";
   let bubbleList = [];
+
+  let bubbles = [];
   // Gain bubble list
   onMount(async () => {
-    let bubbles = await Relationship.getAll();
+    bubbles = await Relationship.getAll();
     let tempList = [];
     bubbles.forEach((el) => {
       if(el) {
-      console.info("e", bubbles);
-      let str = LocalData.getRelationshipAlias(el);
-      tempList.push(str);
+        let str = LocalData.getRelationshipAlias(el);
+        tempList.push(str);
       }
     });
     bubbleList = tempList;
+
+    if(bubbleList.length > 0) {
+      selected = 0;
+      console.info("SELECTED", selected);
+    }
   });
 
+
+async function generateLink() {
+  let token = localStorage.getItem("token");
+  if(!token){
+    token = "Notokenowell"
+  }
+  console.info("rel", token);
+
+  let inviteLink =InviteData.createInvite(bubbles[selected], token, "localhost:5000/Invite/");
+  link = inviteLink;
+}
 </script>
 
 <aside class="sidebar relative h-full min-h-screen shadow-md">
@@ -35,16 +56,16 @@ import { LocalData } from '../../git/localdata';
       for="grid-state">
       Select your bubble
     </label>
-    <select
+    <select bind:value={selected}
       class="block w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500"
       id="grid-state">
-      {#each bubbleList as b}
-        <option>{b}</option>
+      {#each bubbleList as b, i}
+        <option value={i}>{b}</option>
       {/each}
 
     </select>
     <p>
-      <button
+      <button on:click|once={generateLink}
         class="mt-4 bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border
         border-gray-400 rounded shadow">
         Generate link
@@ -64,7 +85,8 @@ import { LocalData } from '../../git/localdata';
           focus:outline-none"
           type="text"
           placeholder="link"
-          aria-label="Full name" />
+          aria-label="Full name" 
+          bind:value={link}/>
         <button
           class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded
           inline-flex items-center">

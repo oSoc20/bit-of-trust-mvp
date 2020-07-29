@@ -9,8 +9,9 @@ import { goto, url } from '@sveltech/routify';
   function signUpuser() {
 
     if(name){
-      user.login(name);
       goto("/BubbleOverview");
+      user.login(name);
+      
     }
   }
 </script>

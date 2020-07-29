@@ -9,25 +9,11 @@ import BubbleContacts from "./Bubble/BubbleContacts.svelte";
   import { Plus } from 'svelte-hero-icons';
 import { onMount } from "svelte";
 import Relationship from "../git/relationship";
-  // get all contacts
-  const allBubbles = [
-    {
-      name: "my-relationship",
-      contacts: [
-      ]
-    },
-    {
-      name: "osoc ladies"
-    }
-  ];
-let res;
-onMount(async () => {
-  let relationship = await Relationship.get("my-relationship");
-  for (let token of await relationship.getTokens()) {
-    let tokenString = tokenToString(token);
-    allBubbles[0].contacts.push({"name": tokenString, "pic": null});
-  }
-});
+import { LocalData } from "../git/localdata";
+
+let allBubbles = [];
+let al2 = [];
+
   // get all contacts
  
   
@@ -37,11 +23,39 @@ onMount(async () => {
 
     toggleBubble[i] = !toggleBubble[i];
   };
+
+
+  onMount(async () => {
+  let relationships = await Relationship.getAll();
+
+  for (let relationship of relationships) {
+    if(!relationship) {
+      al2 = allBubbles;
+      break;
+    }
+
+    let alias = LocalData.getRelationshipAlias(relationship);
+    allBubbles.push({
+      "name": alias,
+      "contacts": []
+    });
+    console.info("allbub", allBubbles);
+    for (let token of await relationship.getTokens()) {
+      let tokenString = tokenToString(token);
+      allBubbles[allBubbles.length - 1].contacts.push({
+        "name": tokenString,
+        "pic": null
+      });
+    }
+}
+
+ 
+});
 </script>
 <div>
-{#if allBubbles && allBubbles.length > 0}
+{#if allBubbles }
 <ul>
-    {#each allBubbles as {name, contacts = []}, i}
+    {#each al2 as {name, contacts = []}, i}
       <li> <button class="text-left w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" toggled={toggleBubble[i]}   /> 
       </button></li>
       {#if toggleBubble[i]}

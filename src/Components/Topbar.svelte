@@ -3,7 +3,7 @@
 	import user from "../Data/SignUpController";
 	Relationship.get("my-relationship").then( (ev) => {
 		ev.getTokens().then((v) => {
-			console.info("tokens", v);
+		//	console.info("tokens", v);
 		});
 	});
 

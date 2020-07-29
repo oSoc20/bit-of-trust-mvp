@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "scripts": {
     "build": "rimraf public/bundle && rollup -c",
-    "build:prod": "cross-env NODE_ENV=production yarn run build",
+    "build:prod": "cross-env NODE_ENV=production npm run build",
     "start": "sirv public --single",
     "dev": "rollup -c -w",
     "dev-dynamic": "cross-env BUNDLING=dynamic npm run dev"

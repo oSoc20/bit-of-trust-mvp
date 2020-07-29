@@ -15,7 +15,6 @@ import user from '../../Data/SignUpController';
   let selected ="";
   let link = "";
   let bubbleList = [];
-
   let bubbles = [];
   // Gain bubble list
   onMount(async () => {
@@ -46,6 +45,12 @@ async function generateLink() {
   let inviteLink =InviteData.createInvite(bubbles[selected], token, "localhost:5000/Invite/");
   link = inviteLink;
 }
+function copyToClipboard() {
+  var copyText = document.getElementById("bubbleLink");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999);
+  document.execCommand("copy");
+}
 </script>
 
 <aside class="sidebar relative h-full min-h-screen shadow-md">
@@ -74,7 +79,7 @@ async function generateLink() {
 
 
     </p>
-    <form class="mt-8 mb-8 w-full max-w-sm">
+    <div class="mt-8 mb-8 w-full max-w-sm">
       <label
         class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"
         for="grid-state">
@@ -86,15 +91,16 @@ async function generateLink() {
           focus:outline-none"
           type="text"
           placeholder="link"
-          aria-label="Full name"
+          id="bubbleLink"
+          aria-label="Full name" 
           bind:value={link}/>
-        <button
+        <button on:click="{copyToClipboard}"
           class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded
           inline-flex items-center">
           <Clipboard size="24" />
         </button>
       </div>
-    </form>
+    </div>
     <label
       class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2 mt-2"
       for="grid-state">
@@ -103,7 +109,7 @@ async function generateLink() {
 
     <div class="px-2">
       <div class="text-center text-gray-700 font-bold text-xs flex -mx-2">
-        <div class="px-2">
+        <div class="">
           <button
             class="border-none bg-gray-300 hover:bg-gray-400 font-bold text-gray-800 py-2 px-8
             rounded text-center">
@@ -112,8 +118,6 @@ async function generateLink() {
             </div>
             <div>Email</div>
           </button>
-        </div>
-        <div class="px-2">
           <button
             class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-8
             rounded text-center">
@@ -123,30 +127,7 @@ async function generateLink() {
             <div class="leading-relaxed">SMS</div>
           </button>
         </div>
-        <div class="px-2">
-          <button
-            class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-8
-            rounded text-center">
-            <div class="inline-flex">
-              <Printer class="w-6 h-6 inline-block" size="24" />
-            </div>
-            <p class="leading-relaxed py-0">Printer </p>
-            </button>
-        </div>
       </div>
-
-  <!-- Invite link -->
-  <!--
-    todo:
-      - ask what team backend needs
-        - Do we provide link?
-        - Do they need a name?
-
-
-
-  -->
-
-
 </aside>
 
 <style>

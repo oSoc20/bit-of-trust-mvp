@@ -16,7 +16,7 @@
 <style>
   div {
     line-height: 40px;
-    text-align: center;
+    text-align: left;
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -26,7 +26,7 @@
     margin: 0 0 0 1em;
   }
 </style>
-<div class="flex mt-3 mb-3 hover:bg-gray-100 rounded-full">
+<div class="mt-3 mb-3 hover:bg-gray-100 rounded-full">
   <div class="flex rounded">
     <img alt="team" class="w-10 h-10 bg-gray-100 object-cover object-center rounded-full"
          src="https://dummyimage.com/84x84"/>

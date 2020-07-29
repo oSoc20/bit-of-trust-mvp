@@ -9,6 +9,4 @@
   @tailwind base;
   @tailwind components;
   @tailwind utilities;
-
-  @import '../public/global.css';
 </style>

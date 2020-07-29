@@ -2,7 +2,7 @@ import git from "isomorphic-git";
 
 import {gitOpts} from "./config";
 import type {Token} from "./token";
-import {tokenToString} from "./token";
+import {stringToToken, tokenToString} from "./token";
 import type {InviteSecret} from "./invitedata";
 
 const {fs} = gitOpts;
@@ -167,6 +167,30 @@ export class Relationship {
     }
 
     return true;
+  }
+
+  static async findCommitOfToken(hash: any, tokenString: string) {
+    let commits = await git.log({depth: 100, ref: hash, ...gitOpts});
+    commits.reverse();
+    let walkers = commits.map(c => git.TREE({ref: c.commit.tree, ...gitOpts}));
+    let walk = await git.walk({
+      trees: walkers,
+      map: async (filepath, stuff) => {
+        for (let i = 0; i < stuff.length; i++) {
+          let t = stuff[i];
+          if (t == null) continue;
+          let content = await t.content();
+          if (content instanceof Uint8Array) {
+            let textContent = new TextDecoder().decode(content);
+            if (textContent.includes(tokenString)) {
+              return commits[i].oid;
+            }
+          }
+        }
+      },
+      ...gitOpts
+    });
+    return walk[0];
   }
 }
 

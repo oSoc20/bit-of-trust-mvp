@@ -31,6 +31,11 @@
       edges: {
         width: 2,
         color: "#2c5282",
+        font: {
+          color: "#2c5282",
+          face: "Roboto",
+          size: 0
+        }
       },
       layout: {
         hierarchical: {
@@ -99,7 +104,7 @@
         if (!data.nodes.getIds().some(id => id === tokenString)) {
           data.nodes.add({id: tokenString, label: tokenAlias, value: 1, group: visGroup});
         }
-        data.edges.add({from: tokenString, to: hash});
+        data.edges.add({from: tokenString, to: hash, label: ""});
       }
     }
 
@@ -109,7 +114,7 @@
       let tokenString = params.node;
       let node = network.body.nodes[tokenString];
       if (node.options.group === "unknownUsers") {
-        network.body.nodes[tokenString].setOptions({font: {size: 16}});
+        node.setOptions({font: {size: 16}});
         network.redraw();
       }
     });
@@ -117,9 +122,28 @@
       let tokenString = params.node;
       let node = network.body.nodes[tokenString];
       if (node.options.group === "unknownUsers") {
-        network.body.nodes[tokenString].setOptions({font: {size: 0}});
+        node.setOptions({font: {size: 0}});
         network.redraw();
       }
+    });
+    network.on("hoverEdge", async (params) => {
+      let edge = network.body.edges[params.edge];
+      if (edge.options.label !== undefined) {
+        edge.setOptions({font: {size: 16}});
+      } else {
+        edge.setOptions({font: {size: 1}}); //HACK
+        let hash = await Relationship.findCommitOfToken(edge.toId, edge.fromId);
+        edge.setOptions({label: hash})
+        if (edge.options.font.size !== 0) { //HACK
+          edge.setOptions({font: {size: 16}});
+        }
+      }
+      network.redraw();
+    });
+    network.on("blurEdge", (params) => {
+      let edge = network.body.edges[params.edge];
+      edge.setOptions({font: {size: 0}});
+      network.redraw();
     });
   })();
 </script>

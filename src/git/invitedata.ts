@@ -41,7 +41,6 @@ export class InviteData {
 
   static decodeInvite(inviteString: string) {
     let invite = JSON.parse(atob(inviteString));
-    console.log(invite);
 
     let inviterToken: Token = stringToToken(invite.i);
     let inviterAlias: string = invite.a;

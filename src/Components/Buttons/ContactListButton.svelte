@@ -1,9 +1,11 @@
 <script>
-  export let href = "";
-import { Pencil } from 'svelte-hero-icons';</script>
+import { Pencil } from 'svelte-hero-icons';
+function nameAlert(){
+  let alias = prompt("Change alias to:");
+}
+</script>
      
-     <a
-     href={href}
-        class="bg-blue-500 hover:bg-blue-400 text-white rounded-full shadow">
+     <button on:click={nameAlert}
+        class="bg-blue-500 hover:bg-blue-400 text-white focus:outline-none rounded-full shadow">
         <div class="p-2"><Pencil size="20"/></div>
-    </a>
+</button>

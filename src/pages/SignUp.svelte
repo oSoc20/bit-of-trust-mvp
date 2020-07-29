@@ -11,9 +11,9 @@ import user from "../Data/SignUpController";
 import { goto } from "@sveltech/routify";
   user.authenticate();
 
-  if($user){
+  /*if($user){
     $goto('/');
-  }
+  }*/
   </script>
   <Topbar />
   <div id="main">
@@ -21,7 +21,7 @@ import { goto } from "@sveltech/routify";
   <!-- Add bubble  button-->
   <!--Invite to bubble-->
     <SignupSidebar /> 
- <VisContent />
+
   <Content >
   </Content>
   </div>

@@ -13,5 +13,3 @@
   if ($user) $redirect('/BubbleOverview');
   else $redirect('/SignUp');
 </script>
-
-<AcceptInviteSidebar />

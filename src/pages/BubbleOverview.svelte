@@ -18,7 +18,7 @@ const inviteButtonText = "Invite to Bubble";
 <Sidebar>
 <!--Invite to bubble--><div class="p-8 text-center">
   <CreateButton href={$url("../AddBubble")} text={createBubble} />
-  <CreateButton href={$url( "../Invite")} text={inviteButtonText} />
+  <CreateButton href={$url( "../InviteContact")} text={inviteButtonText} />
 </div>
   <BubbleList /> 
 </Sidebar>

@@ -39,25 +39,41 @@ export class InviteData {
     return baseUrl + btoa(inviteJson);
   }
 
-  static async acceptInvite(inviteString: string, baseUrl: string, ourToken: Token = createToken()): Promise<Token> {
-    let inviteBase64 = inviteString.slice(baseUrl.length); //HACK
-
-    let invite = JSON.parse(atob(inviteBase64));
+  static decodeInvite(inviteString: string) {
+    let invite = JSON.parse(atob(inviteString));
+    console.log(invite);
 
     let inviterToken: Token = stringToToken(invite.i);
     let inviterAlias: string = invite.a;
-    LocalData.setTokenAlias(inviterToken, inviterAlias);
 
     let inviteSecret: InviteSecret = invite.s;
 
     let relationshipName: RelationshipName = invite.r;
-    let relationship = await Relationship.get(relationshipName);
+
+    console.log(inviterToken);
+    console.log(inviterAlias);
+    console.log(inviteSecret);
+    console.log(relationshipName);
+
+    return {
+      inviterToken,
+      inviterAlias,
+      inviteSecret,
+      relationshipName
+    };
+  }
+
+  static async acceptInvite(decodedInvite): Promise<Token> {
+    LocalData.setTokenAlias(decodedInvite.inviterToken, decodedInvite.inviterAlias);
+
+    let relationship = await Relationship.get(decodedInvite.relationshipName);
 
     //TODO: add the option to reuse an existing token
     //TODO: store the fact that this is our token
     //TODO: check for failures
+    let ourToken = createToken();
     await relationship.addToken(ourToken);
-    await relationship.commitChanges(inviteSecret);
+    await relationship.commitChanges(decodedInvite.inviteSecret);
     await relationship.push();
 
     return ourToken;

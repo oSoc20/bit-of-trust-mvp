@@ -13,3 +13,6 @@ export let gitOpts = {
     email: 'system@bit-of-trust',
   },
 };
+
+//HACK HACK HACK
+export let inviteBaseUrl = 'http://localhost:5000/Invite/';

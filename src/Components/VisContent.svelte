@@ -88,7 +88,7 @@
 
     for (let relationship: Relationship of relationships) {
       let hash = await relationship.getHash();
-      let relationshipAlias = LocalData.getRelationshipAlias(relationship);
+      let relationshipAlias = LocalData.getRelationshipAlias(relationship.name);
       data.nodes.add({id: hash, label: relationshipAlias, group: "relationships"});
 
       for (let token of await relationship.getTokens()) {

@@ -15,8 +15,8 @@ let allBubbles = [];
 let al2 = [];
 
   // get all contacts
- 
-  
+
+
   let toggleBubble = new Array(allBubbles.length).fill(false);
 
   const toggle = (i) =>{
@@ -34,7 +34,7 @@ let al2 = [];
       break;
     }
 
-    let alias = LocalData.getRelationshipAlias(relationship);
+    let alias = LocalData.getRelationshipAlias(relationship.name);
     allBubbles.push({
       "name": alias,
       "contacts": []
@@ -49,14 +49,14 @@ let al2 = [];
     }
 }
 al2 = allBubbles;
- 
+
 });
 </script>
 <div>
 {#if allBubbles }
 <ul>
     {#each al2 as {name, contacts = []}, i}
-      <li> <button class="text-left w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" toggled={toggleBubble[i]}   /> 
+      <li> <button class="text-left w-full" on:click={() => toggle(i)}><BubbleCard name={name}  role="region" toggled={toggleBubble[i]}   />
       </button></li>
       {#if toggleBubble[i]}
         <BubbleContacts contacts={contacts} />

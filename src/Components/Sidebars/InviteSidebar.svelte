@@ -10,6 +10,7 @@ import { onMount } from 'svelte';
 import { LocalData } from '../../git/localdata';
 import { InviteData } from '../../git/invitedata';
 import user from '../../Data/SignUpController';
+  import {stringToToken} from "../../git/token";
   const backToBubble = "< Back to bubble list"
   let selected ="";
   let link = "";
@@ -22,7 +23,7 @@ import user from '../../Data/SignUpController';
     let tempList = [];
     bubbles.forEach((el) => {
       if(el) {
-        let str = LocalData.getRelationshipAlias(el);
+        let str = LocalData.getRelationshipAlias(el.name);
         tempList.push(str);
       }
     });
@@ -36,7 +37,7 @@ import user from '../../Data/SignUpController';
 
 
 async function generateLink() {
-  let token = localStorage.getItem("token");
+  let token = stringToToken(localStorage.getItem("token"));
   if(!token){
     token = "Notokenowell"
   }
@@ -85,7 +86,7 @@ async function generateLink() {
           focus:outline-none"
           type="text"
           placeholder="link"
-          aria-label="Full name" 
+          aria-label="Full name"
           bind:value={link}/>
         <button
           class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded

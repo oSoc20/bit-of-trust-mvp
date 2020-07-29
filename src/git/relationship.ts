@@ -10,7 +10,7 @@ const {fs} = gitOpts;
 export type RelationshipName = string;
 
 //TODO: this is turning into a god object => should be split
-class Relationship {
+export class Relationship {
   private changed: boolean = false;
   private unpushedChanges: boolean = false;
 

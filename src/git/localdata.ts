@@ -1,20 +1,21 @@
 import type {Token} from "./token";
 import {tokenToString} from "./token";
-import type Relationship from "./relationship";
+import type {Relationship} from "./relationship";
+import type {RelationshipName} from "./relationship";
 
 export class LocalData {
   private static getKeyForToken(token: Token): string {
    return "token:" + tokenToString(token);
   }
 
-  private static getKeyForRelationship(relationship: Relationship): string {
-    return "relationship:" + relationship.name;
+  private static getKeyForRelationship(relationshipName: RelationshipName): string {
+    return "relationship:" + relationshipName;
   }
 
-  private static getRelationshipFallbackAlias(relationship: Relationship): string {
+  private static getRelationshipFallbackAlias(relationshipName: RelationshipName): string {
     //transform 'my-cool-relationship' to 'My Cool Relationship' as a fallback
 
-    let name = relationship.name;
+    let name = relationshipName;
     return name
       .split("-")
       .map(part => part.charAt(0).toUpperCase() + part.slice(1))
@@ -26,9 +27,10 @@ export class LocalData {
     return localStorage.getItem(key) ?? "Unknown User";
   }
 
-  static getRelationshipAlias(relationship: Relationship): string {
-    let key = this.getKeyForRelationship(relationship);
-    return localStorage.getItem(key) ?? this.getRelationshipFallbackAlias(relationship);
+  static getRelationshipAlias(relationshipName: RelationshipName): string {
+    console.log(relationshipName);
+    let key = this.getKeyForRelationship(relationshipName);
+    return localStorage.getItem(key) ?? this.getRelationshipFallbackAlias(relationshipName);
   }
 
   static setTokenAlias(token: Token, alias: string): void {
@@ -37,7 +39,7 @@ export class LocalData {
   }
 
   static setRelationshipAlias(relationship: Relationship, alias: string): void {
-    let key = this.getKeyForRelationship(relationship);
+    let key = this.getKeyForRelationship(relationship.name);
     localStorage.setItem(key, alias);
   }
 
@@ -47,7 +49,7 @@ export class LocalData {
   }
 
   static isRelationshipKnown(relationship: Relationship): boolean {
-    let key = this.getKeyForRelationship(relationship);
+    let key = this.getKeyForRelationship(relationship.name);
     return localStorage.getItem(key) !== null;
   }
 }

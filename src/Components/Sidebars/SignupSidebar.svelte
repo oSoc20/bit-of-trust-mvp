@@ -1,28 +1,22 @@
-<script>
+<script lang="ts">
   import {Upload, ArrowNarrowRight} from 'svelte-hero-icons';
   import BubbleList from '../BubbleList.svelte';
 import user from '../../Data/SignUpController';
 import { goto, url } from '@sveltech/routify';
+  import {createToken, tokenToString} from "../../git/token";
   const side_title = 'Invite people you trust into your bubble ';
   let name = "bitoftrust";
 
   function signUpuser() {
 
     if(name){
-      let id = guidGenerator();
- 
+      let token = createToken();
+
       user.login(name);
-      localStorage.setItem("token", id);
+      localStorage.setItem("token", tokenToString(token));
       $goto("/BubbleOverview");
     }
   }
-
-  function guidGenerator() {
-    var S4 = function() {
-       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
-    };
-    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
-}
 </script>
 
 <aside class="sidebar relative h-full min-h-screen p-8">

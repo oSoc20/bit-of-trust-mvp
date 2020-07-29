@@ -1,8 +1,8 @@
 <script>
-  import SignupSidebar from "../Components/Sidebars/SignupSidebar.svelte";
+  import SignupSidebar from '../Components/Sidebars/SignupSidebar.svelte';
 
-  import user from "../Data/SignUpController";
-  import {goto} from "@sveltech/routify";
+  import user from '../Data/SignUpController';
+  import { goto } from '@sveltech/routify';
 
   user.authenticate();
 
@@ -13,4 +13,4 @@
 
 <!-- Add bubble  button-->
 <!--Invite to bubble-->
-<SignupSidebar/>
+<SignupSidebar />

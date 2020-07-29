@@ -1,23 +1,20 @@
-<script>
-import ContactItem from "./ContactItem.svelte";
+<script lang="ts">
+  import ContactItem from "./ContactItem.svelte";
+  import type {Token} from "../../git/token";
 
-  export let contacts = [];
+  export let contacts: Array<Token> = [];
 </script>
 
-
 <div class="mx-8">
-{#if contacts && contacts.length > 0}
-<ul>
-
-  {#each contacts as {name} }
-  <li >
-    
-    <ContactItem  name={name} />
-  </li>
-  {/each}
-
-</ul>
-{:else}
-  <p>No contacts in this bubble.</p>
-{/if}
+  {#if contacts && contacts.length > 0}
+    <ul>
+      {#each contacts as {token} }
+        <li>
+          <ContactItem token={token}/>
+        </li>
+      {/each}
+    </ul>
+  {:else}
+    <p>No contacts in this bubble.</p>
+  {/if}
 </div>

@@ -25,7 +25,7 @@
 
 <style>
 .topbar {
-  margin: 1.2em 1.7em;
+  margin: 1.2em 1.3em;
 }
 </style>
 

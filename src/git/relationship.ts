@@ -63,6 +63,7 @@ export class Relationship {
       checkout: true,
       ...gitOpts
     });
+    await git.push({ ref: name, remote: 'origin', ...gitOpts });
     return new Relationship(name);
   }
 

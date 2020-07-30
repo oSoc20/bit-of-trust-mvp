@@ -1,7 +1,7 @@
 <script>
   import { Plus } from 'svelte-hero-icons';
   import BubbleList from '../BubbleList.svelte';
-import Relationship from '../../git/relationship';
+  import Relationship from '../../git/relationship';
   const side_title = 'Invite people you trust into your bubble ';
 
   async function createBubble(){
@@ -9,10 +9,10 @@ import Relationship from '../../git/relationship';
     if (name == ""){
       alert("Please provide a name for your bubble")
     } else {
-let relationship = await Relationship.create(name);
+      let relationship = await Relationship.create(name);
       await relationship.addToken(localStorage.getItem("token"));
-await relationship.commitChanges();
-await relationship.push();
+      await relationship.commitChanges();
+      await relationship.push();
     }
   }
 </script>

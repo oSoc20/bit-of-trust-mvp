@@ -1,6 +1,7 @@
 <script>
 	import Relationship from "../git/relationship";
 	import user from "../Data/SignUpController";
+import { url } from "@sveltech/routify";
 	Relationship.get("my-relationship").then( (ev) => {
 		ev.getTokens().then((v) => {
 		//	console.info("tokens", v);
@@ -37,7 +38,10 @@
 {#if !$user}
 		<span class="font-semibold ml-4 text-xl tracking-tight">{userName}</span>
 {:else}
+<div class="flex space-x-4">
 <span class="font-semibold ml-4 text-xl tracking-tight">{$user}</span>
+<a class="" href={$url("/SignOut")}>Sign out</a>
+</div>
 {/if}
   </div>
 

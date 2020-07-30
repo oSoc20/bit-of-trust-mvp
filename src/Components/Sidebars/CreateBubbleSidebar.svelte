@@ -12,7 +12,7 @@ import { goto } from '@sveltech/routify';
     if (name == ""){
       alert("Please provide a name for your bubble")
     } else {
-let relationship = await Relationship.create(name);
+      let relationship = await Relationship.create(name);
       await relationship.addToken(localStorage.getItem("token"));
 await relationship.commitChanges();
 await relationship.push();

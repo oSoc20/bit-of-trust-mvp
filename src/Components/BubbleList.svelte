@@ -41,9 +41,8 @@ let al2 = [];
     });
     console.info("allbub", allBubbles);
     for (let token of await relationship.getTokens()) {
-      let tokenString = tokenToString(token);
       allBubbles[allBubbles.length - 1].contacts.push({
-        "name": tokenString,
+        "token": token,
         "pic": null
       });
     }

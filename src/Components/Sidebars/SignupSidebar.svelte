@@ -50,7 +50,10 @@ import {LocalData} from '../../git/localdata';
           class=" uppercase tracking-wide text-gray-700 text-xs font-bold"
           for="grid-state">
     Alias picture
-  </label>
+  </label>    <label
+            class="tracking-wide text-gray-300 pl-1 text-xs mb-2"
+            for="grid-state">
+(this is not functional yet)</label>
 
   <section class="text-gray-700 body-font pt-2">
     <div class="container mx-auto flex py-2 items-center">

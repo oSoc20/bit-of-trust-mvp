@@ -51,6 +51,7 @@
   "dependencies": {
     "@isomorphic-git/lightning-fs": "^4.3.0",
     "@peculiar/webcrypto": "^1.1.2",
+    "async-mutex": "^0.2.4",
     "isomorphic-git": "^1.7.3",
     "sirv-cli": "^0.4.4",
     "vis-network": "^7.10.2"

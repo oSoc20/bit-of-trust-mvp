@@ -30,7 +30,7 @@ import {LocalData} from '../../git/localdata';
     </label>
 
     <label
-            class="tracking-wide text-gray-300 pl-1 text-xs mb-2"
+            class="tracking-wide text-gray-400 pl-1 text-xs mb-2"
             for="grid-state">
       (you can change this later)
     </label>
@@ -51,7 +51,7 @@ import {LocalData} from '../../git/localdata';
           for="grid-state">
     Alias picture
   </label>    <label
-            class="tracking-wide text-gray-300 pl-1 text-xs mb-2"
+            class="tracking-wide text-gray-400 pl-1 text-xs mb-2"
             for="grid-state">
 (this is not functional yet)</label>
 

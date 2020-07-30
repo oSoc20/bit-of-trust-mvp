@@ -40,7 +40,7 @@ export class Relationship {
     await this.ensureCloned();
     try {
       try {
-        await git.fetch({ref: name, ...gitOpts});
+        await git.fetch({ref: name, ...gitOpts, singleBranch: true});
       } catch {
         // branch doesn't exist on remote
       }
@@ -74,6 +74,7 @@ export class Relationship {
 
     await this.ensureCloned();
 
+    await git.fetch({...gitOpts});
     let branches = await git.listBranches({remote: 'origin', ...gitOpts});
 
     let relationships = [];

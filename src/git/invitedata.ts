@@ -57,15 +57,13 @@ export class InviteData {
     };
   }
 
-  static async acceptInvite(decodedInvite): Promise<Token> {
+  static async acceptInvite(decodedInvite, ourToken: Token): Promise<Token> {
     LocalData.setTokenAlias(decodedInvite.inviterToken, decodedInvite.inviterAlias);
 
     let relationship = await Relationship.get(decodedInvite.relationshipName);
 
-    //TODO: add the option to reuse an existing token
-    //TODO: store the fact that this is our token
+    //TODO: add the option to have a different token for each relationship
     //TODO: check for failures
-    let ourToken = createToken();
     await relationship.addToken(ourToken);
     await relationship.commitChanges(decodedInvite.inviteSecret);
     await relationship.push();

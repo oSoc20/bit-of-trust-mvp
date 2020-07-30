@@ -4,6 +4,7 @@ import {gitOpts} from "./config";
 import type {Token} from "./token";
 import {stringToToken, tokenToString} from "./token";
 import type {InviteSecret} from "./invitedata";
+import {Mutex} from 'async-mutex';
 
 const {fs} = gitOpts;
 
@@ -13,6 +14,7 @@ export type RelationshipName = string;
 export class Relationship {
   private changed: boolean = false;
   private unpushedChanges: boolean = false;
+  private static mutex = new Mutex();
 
   private get path(): string {
     return gitOpts.dir + '/' + this.name;
@@ -68,14 +70,21 @@ export class Relationship {
   }
 
   static async getAll(): Promise<Array<Relationship>> {
+    let release = await Relationship.mutex.acquire();
+
     await this.ensureCloned();
 
     let branches = await git.listBranches({remote: 'origin', ...gitOpts});
 
-    return Promise.all(
-      branches.filter(b => b != "HEAD" && b != "dummy")
-        .map(async n => await Relationship.get(n))
-    );
+    let relationships = [];
+    for (let branch of branches.filter(b => b != "HEAD" && b != "dummy")) {
+      let relationship = await Relationship.get(branch);
+      relationships.push(relationship);
+    }
+
+    release();
+
+    return relationships;
   }
 
   private async isCheckedOut(): Promise<boolean> {
@@ -104,14 +113,20 @@ export class Relationship {
   }
 
   async getTokens(): Promise<Array<Token>> {
+    let release = await Relationship.mutex.acquire();
+
     await this.ensureFileExists();
 
     let lines = (await fs.promises.readFile(this.path, 'utf8')).split('\n');
-    return lines
+    let tokens = lines
       .filter(l => l.length > 0)
       .map(l => new Uint8Array(l
         .match(/.{1,2}/g)
         .map(byte => parseInt(byte, 16))));
+
+    release();
+
+    return tokens;
   }
 
   private async includesToken(token: Token): Promise<boolean> {

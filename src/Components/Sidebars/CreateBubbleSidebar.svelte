@@ -10,6 +10,9 @@ import Relationship from '../../git/relationship';
       alert("Please provide a name for your bubble")
     } else {
       await Relationship.create (name);
+      await relationship.addToken(localStorage.getItem("token"));
+await relationship.commitChanges();
+await relationship.push();
     }
   }
 </script>

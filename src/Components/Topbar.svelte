@@ -13,7 +13,7 @@ import { url } from "@sveltech/routify";
   //
 </script>
 
-<nav class="flex items-center justify-between flex-wrap bg-white-500 p-4 pl-5 shadow-md">
+<nav class="navbar flex items-center justify-between flex-wrap bg-white-500 p-4 pl-5 shadow-md">
   <div class="flex items-center flex-shrink-0 text-black mr-6">
     <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 width="36px" height="36px" viewBox="0 0 185.4 272.3" enable-background="new 0 0 185.4 272.3" xml:space="preserve">
@@ -46,3 +46,10 @@ import { url } from "@sveltech/routify";
   </div>
 
 </nav>
+
+<style>
+.navbar {
+	height: 72px;
+	width: 100vw;
+}
+</style>

@@ -15,5 +15,6 @@
   aside.sidebar {
     float: none;
     width: 100%;
+    overflow-y: scroll !important;
   }
 </style>

@@ -18,5 +18,7 @@
   #main {
     grid-template-columns: 24rem auto;
     display: grid;
+    height: calc(100vh - 100px);
+    overflow: auto;
   }
 </style>

@@ -42,7 +42,7 @@ async function generateLink() {
   }
   console.info("rel", token);
 
-  let inviteLink =InviteData.createInvite(bubbles[selected], token, "localhost:5000/Invite/");
+  let inviteLink =InviteData.createInvite(bubbles[selected], token, "bit-of-trust.osoc.be/Invite/");
   link = inviteLink;
 }
 function copyToClipboard() {

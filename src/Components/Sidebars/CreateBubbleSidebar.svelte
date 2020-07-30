@@ -3,6 +3,7 @@
   import BubbleList from '../BubbleList.svelte';
   import Relationship from '../../git/relationship';
   import CreateButton from "../Buttons/CreateButton.svelte";
+import { goto } from '@sveltech/routify';
   const side_title = 'Invite people you trust into your bubble ';
   const backToBubble = "< Back to bubble list"
 
@@ -15,6 +16,7 @@ let relationship = await Relationship.create(name);
       await relationship.addToken(localStorage.getItem("token"));
 await relationship.commitChanges();
 await relationship.push();
+      $goto("/");
     }
   }
 </script>

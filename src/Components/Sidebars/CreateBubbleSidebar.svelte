@@ -16,7 +16,7 @@ let relationship = await Relationship.create(name);
       await relationship.addToken(localStorage.getItem("token"));
 await relationship.commitChanges();
 await relationship.push();
-      $goto("/");
+      //$goto("/");
     }
   }
 </script>

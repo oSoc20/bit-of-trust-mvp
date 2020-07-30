@@ -1,8 +1,10 @@
 <script>
   import { Plus } from 'svelte-hero-icons';
   import BubbleList from '../BubbleList.svelte';
-import Relationship from '../../git/relationship';
+  import Relationship from '../../git/relationship';
+  import CreateButton from "../Buttons/CreateButton.svelte";
   const side_title = 'Invite people you trust into your bubble ';
+  const backToBubble = "< Back to bubble list"
 
   async function createBubble(){
     let name = document.getElementById("bubbleTextbox").value;
@@ -18,6 +20,7 @@ await relationship.push();
 </script>
 
 <aside class="sidebar relative h-full min-h-screen p-8">
+  <div class=" ml-6 pt-8"><CreateButton href={$url("../BubbleOverview")} text={backToBubble} /></div>
  <form class="mt-48 mb-4 w-full max-w-sm">
       <label
         class=" uppercase tracking-wide text-gray-700 text-xs font-bold mb-2"

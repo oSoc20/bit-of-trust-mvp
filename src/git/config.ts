@@ -14,4 +14,4 @@ export let gitOpts = {
 };
 
 //HACK HACK HACK
-export let inviteBaseUrl = 'http://localhost:5000/Invite/';
+export let inviteBaseUrl = 'https://bit-of-trust.osoc.be/Invite/';

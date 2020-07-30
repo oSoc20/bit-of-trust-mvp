@@ -18,12 +18,12 @@ import user from '../../Data/SignUpController';
   let bubbles = [];
   // Gain bubble list
   onMount(async () => {
-    bubbles = await Relationship.getAll();
     let tempList = [];
-    for (const el of bubbles) {
+    for (const el of await Relationship.getAll()) {
       if(el && (await el.getTokens()).some(t => tokenToString(t) === localStorage.getItem("token"))) {
         let str = LocalData.getRelationshipAlias(el.name);
         tempList.push(str);
+        bubbles.push(el);
       }
     }
     bubbleList = tempList;

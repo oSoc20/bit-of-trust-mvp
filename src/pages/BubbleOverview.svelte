@@ -13,6 +13,12 @@
   const inviteButtonText = "Invite to Bubble";
 
 </script>
+<style>
+  Sidebar {
+    overflow-y: scroll;
+    box-sizing: content-box;
+  }
+</style>
 
 <Sidebar class="overflow-y-scroll">
   <!--Invite to bubble-->

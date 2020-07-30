@@ -9,9 +9,9 @@
 <div class="mx-8">
   {#if contacts && contacts.length > 0}
     <ul>
-      {#each contacts as {name} }
+      {#each contacts as {token} }
         <li>
-          <ContactItem token={name}/>
+          <ContactItem token={token}/>
         </li>
       {/each}
     </ul>

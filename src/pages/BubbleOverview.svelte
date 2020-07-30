@@ -14,7 +14,7 @@
 
 </script>
 
-<Sidebar class="overflow-auto">
+<Sidebar class="overflow-y-scroll">
   <!--Invite to bubble-->
   <div class="p-8 text-center">
     <CreateButton href={$url("../AddBubble")} text={createBubble}/>

@@ -40,7 +40,7 @@ export class Relationship {
     await this.ensureCloned();
     try {
       try {
-        await git.fetch({ref: name, ...gitOpts, singleBranch: true});
+        await git.fetch({ref: name, ...gitOpts});
       } catch {
         // branch doesn't exist on remote
       }

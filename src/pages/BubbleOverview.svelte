@@ -16,10 +16,16 @@
 
 <Sidebar class="overflow-y-scroll">
   <!--Invite to bubble-->
-  <div class="p-8 text-center">
+  <div class="topbar">
     <CreateButton href={$url("../AddBubble")} text={createBubble}/>
     <CreateButton href={$url( "../InviteContact")} text={inviteButtonText}/>
   </div>
   <BubbleList/>
 </Sidebar>
+
+<style>
+.topbar {
+  margin: 1.2em 1.7em;
+}
+</style>
 

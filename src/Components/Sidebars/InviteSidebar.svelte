@@ -10,7 +10,7 @@ import { onMount } from 'svelte';
 import { LocalData } from '../../git/localdata';
 import { InviteData } from '../../git/invitedata';
 import user from '../../Data/SignUpController';
-  import {stringToToken} from "../../git/token";
+  import {stringToToken, tokenToString} from "../../git/token";
   const backToBubble = "< Back to bubble list"
   let selected ="";
   let link = "";
@@ -20,12 +20,12 @@ import user from '../../Data/SignUpController';
   onMount(async () => {
     bubbles = await Relationship.getAll();
     let tempList = [];
-    bubbles.forEach((el) => {
-      if(el) {
+    for (const el of bubbles) {
+      if(el && (await el.getTokens()).some(t => tokenToString(t) === localStorage.getItem("token"))) {
         let str = LocalData.getRelationshipAlias(el.name);
         tempList.push(str);
       }
-    });
+    }
     bubbleList = tempList;
 
     if(bubbleList.length > 0) {
@@ -92,7 +92,7 @@ function copyToClipboard() {
           type="text"
           placeholder="link"
           id="bubbleLink"
-          aria-label="Full name" 
+          aria-label="Full name"
           bind:value={link}/>
         <button on:click="{copyToClipboard}"
           class="border-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded

@@ -3,7 +3,7 @@
   import BubbleList from '../BubbleList.svelte';
   import Relationship from '../../git/relationship';
   import CreateButton from "../Buttons/CreateButton.svelte";
-import { goto } from '@sveltech/routify';
+import { url } from '@sveltech/routify';
   const side_title = 'Invite people you trust into your bubble ';
   const backToBubble = "< Back to bubble list"
 

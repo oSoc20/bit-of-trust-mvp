@@ -11,6 +11,7 @@ import { onMount } from "svelte";
 import Relationship from "../git/relationship";
 import { LocalData } from "../git/localdata";
 
+let loading = true;
 let allBubbles = [];
 let al2 = [];
 
@@ -47,11 +48,16 @@ let al2 = [];
       });
     }
 }
+
+loading = false;
 al2 = allBubbles;
 
 });
 </script>
 <div>
+{#if loading}
+<p>Fetching bubble data</p>
+{/if}
 {#if allBubbles }
 <ul>
     {#each al2 as {name, contacts = []}, i}
@@ -62,5 +68,6 @@ al2 = allBubbles;
       {/if}
     {/each}
 </ul>
+
 {/if}
 </div>

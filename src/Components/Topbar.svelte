@@ -2,11 +2,6 @@
 	import Relationship from "../git/relationship";
 	import user from "../Data/SignUpController";
 import { url } from "@sveltech/routify";
-	Relationship.get("my-relationship").then( (ev) => {
-		ev.getTokens().then((v) => {
-		//	console.info("tokens", v);
-		});
-	});
 
 	let userName = "Bit of Trust";
   const icon = 'I';

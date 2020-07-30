@@ -3,20 +3,23 @@
   import BubbleList from '../BubbleList.svelte';
   import Relationship from '../../git/relationship';
   import CreateButton from "../Buttons/CreateButton.svelte";
-import { url } from '@sveltech/routify';
+import { url, goto } from '@sveltech/routify';
   const side_title = 'Invite people you trust into your bubble ';
   const backToBubble = "< Back to bubble list"
 
+  let adding = false;
+  $: adding;
   async function createBubble(){
     let name = document.getElementById("bubbleTextbox").value;
     if (name == ""){
       alert("Please provide a name for your bubble")
     } else {
+      adding = true;
       let relationship = await Relationship.create(name);
       await relationship.addToken(localStorage.getItem("token"));
-await relationship.commitChanges();
-await relationship.push();
-      //$goto("/");
+      await relationship.commitChanges();
+    await relationship.push();
+    $goto("/");
     }
   }
 </script>
@@ -42,7 +45,11 @@ await relationship.push();
 
       <div class="text-right">
        <button on:click={createBubble} class="bg-gray-300 hover:bg-gray-400 text-xs text-gray-800 font-bold py-2 px-4 rounded inline-flex items-center">
+        {#if !adding}
         <span class="pr-6 pl-6">Create Bubble</span>
+        {:else}
+          <span>Creating bubble</span>
+        {/if}
         <Plus size="24" />
        </button>
        </div>
